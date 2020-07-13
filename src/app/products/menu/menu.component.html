@@ -1,0 +1,40 @@
+<hidenav-stretchheader header-height="50" opacity-factor="7" opacity-color="black" init-expanded="true" blur-factor="5">
+  <div #static style="padding-top: env(safe-area-inset-top, 20px);">
+    <ion-toolbar [routerLink]="'..'" color="white" style="font-size: 46px"><ion-icon style="color: white;" name="arrow-round-back"></ion-icon></ion-toolbar>
+  </div>
+  <div #static #title style="text-align: center;padding-top: env(safe-area-inset-top, 20px);text-align: center;" (click)="expand()">
+    <label style="opacity: 1;left: 60px;top: 15px;position: relative;font-size: 20px; font-weight: bold;color:white;">Tasca do Edgard</label>
+    <label style="opacity: 0;left: 60px;top: 15px;position: absolute;font-size: 20px; font-weight: bold;color:white;">Cardápio</label>
+  </div>
+  <div #shrinkexpand style="max-height: 250px;" (click)="expand()">
+    <img src="https://cdn2.thecatapi.com/images/eF3HSMIB_.jpg" style="max-height: 250px;object-fit: cover;" width="100%" alt="">
+  </div>
+</hidenav-stretchheader>
+
+<ion-content padding hidenav-sh-content>
+  <!-- Item Dividers in a List -->
+  <ion-list>
+    <ion-item-divider>
+      <ion-label>
+        Secondary Item Divider
+      </ion-label>
+    </ion-item-divider>
+  
+    <ion-item><ion-label>A1</ion-label></ion-item>
+    <ion-item><ion-label>A2</ion-label></ion-item>
+    <ion-item><ion-label>A3</ion-label></ion-item>
+    <ion-item><ion-label>A4</ion-label></ion-item>
+    <ion-item><ion-label>A5</ion-label></ion-item>
+  
+    <ion-item-divider>
+      <ion-label>
+        Section B
+      </ion-label>
+    </ion-item-divider>
+  
+    <ion-item><ion-label>B1</ion-label></ion-item>
+    <ion-item><ion-label>B2</ion-label></ion-item>
+    <ion-item><ion-label>B3</ion-label></ion-item>
+    
+  </ion-list>
+</ion-content>
