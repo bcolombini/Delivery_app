@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { MenuComponent } from './menu/menu.component';
 import { MenuRoutingModule } from './product-routing.module';
 import { SharedModule } from '../shared/shared/shared.module';
+import { ItemComponent } from './menu/custom/item/item.component';
 
 
 
@@ -14,6 +15,9 @@ import { SharedModule } from '../shared/shared/shared.module';
     MenuRoutingModule,
     SharedModule
   ],
-  declarations: [MenuComponent]
+  declarations: [
+    MenuComponent,
+    ItemComponent
+  ]
 })
 export class ProductModule { }

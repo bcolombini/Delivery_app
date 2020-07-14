@@ -1,53 +1,32 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { HidenavStretchheaderComponent } from 'ionic4-hidenav';
-import { IonContent } from '@ionic/angular';
+import { MenuService } from './menu.service';
+import { Menu } from 'src/app/models/menu.model';
+import { ChipEnum } from 'src/app/enums/chip.enum';
+
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements AfterViewInit {
+export class MenuComponent implements OnInit,AfterViewInit {
 
-  @ViewChild('title', {read: ElementRef}) title: ElementRef;
-  @ViewChild(HidenavStretchheaderComponent) hidenav: HidenavStretchheaderComponent;
+  public menu:Menu[];
 
-  constructor() { }
 
-  ngAfterViewInit(){
-    const hideNavHeaderHeigth = this.hidenav.header.nativeElement.offsetHeight
-    const establishmentElement = this.title.nativeElement.children[0];
-    const menuElement = this.title.nativeElement.children[1];
-    const initElementPosition = this.initElementPosition(establishmentElement);
-    this.title.nativeElement.style.transform = 'translate3d('+initElementPosition+'px, '+(hideNavHeaderHeigth-50)+'px, 0)';
+  constructor(private menuService:MenuService) { }
 
-    this.hidenav.scroll.subscribe(res => {
-      let moveCalculate = this.moveElement(initElementPosition,res,hideNavHeaderHeigth)
-      let opacityCalculate = this.calculateOpacity(hideNavHeaderHeigth,res)
-      let inverterOpacityCalculate = this.calculateInverterOpacity(hideNavHeaderHeigth,res)
-      establishmentElement.style.opacity = opacityCalculate
-      menuElement.style.opacity = inverterOpacityCalculate
-      this.title.nativeElement.style.transform = 'translate3d('+moveCalculate+'px, '+(res-50)+'px, 0)';
-    })
-  }
+  ngOnInit(){
   
-  private calculateOpacity(elementHeigth,position) {
-    return (position-50) * 1.25 / elementHeigth
   }
 
-  private calculateInverterOpacity(elementHeigth,position) {return Math.abs(this.calculateOpacity(elementHeigth,position)-1)}
-  
-  private initElementPosition(element) {
-    let establishmentOffsetWidth = element.offsetWidth
-    let windowWidth = window.innerWidth
-    return windowWidth/2-(establishmentOffsetWidth/2)-60
-  }
-  
-  private moveElement(elementPosition,position,headerHeigth) {
-    return position * elementPosition / headerHeigth
+  async ngAfterViewInit(){
+    this.menu = await this.menuService.getProductList().toPromise() as Menu[]
+    console.log(this.menu)
+
   }
 
-  expand() {
-    this.hidenav.toggle(300);
+  public onClick($event){
+    console.log($event)
   }
 }
