@@ -12,10 +12,13 @@ import { HidenavModule } from 'ionic4-hidenav';
 import { SharedModule } from './shared/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
-import { CurrencyFormatPipe } from './pipes/currency-format.pipe';
+import { ProductComponent } from './products/product/product.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    ProductComponent
+  ],
   entryComponents: [],
   imports: [
     BrowserModule, 

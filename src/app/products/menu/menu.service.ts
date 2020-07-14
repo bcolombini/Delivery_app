@@ -3,8 +3,6 @@ import { Platform } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 import { from } from 'rxjs';
-import { Product } from 'src/app/models/product.model';
-import { Category } from 'src/app/models/category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +26,7 @@ export class MenuService {
   }
 
   private nativeProductRequest(){
-    let nativeResquest = this.nativeHttp.get(this.productURL,{},{})
+    let nativeResquest = this.nativeHttp.get(this.productURL,{},{}).then(x=>{return JSON.parse(x.data)})
     return from(nativeResquest)
   }
 }
