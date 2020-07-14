@@ -21,7 +21,7 @@ export class ItemComponent implements OnInit {
   }
 
   public onClick(){
-    this.onClickEvent.emit("Oi")
+    this.onClickEvent.emit(this.product)
   }
 
 }

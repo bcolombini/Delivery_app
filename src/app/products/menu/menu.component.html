@@ -2,7 +2,7 @@
   <ion-toolbar color="dark">
     <ion-title>Cardápio</ion-title>
     <ion-buttons slot="end">
-      <ion-button color="light" (click)="presentActionSheet()">
+      <ion-button color="light" (click)="presentActionSheet()"  >
         <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -10,11 +10,12 @@
 </ion-header>
 
 <ion-content>
+  <custom-header></custom-header>
   <ion-virtual-scroll [items]="menu">
     <span *virtualItem="let item">
       <ion-item-divider color="light">
         <ion-label>
-          <h1 class="item-divider">{{item.category.name}}</h1>
+          <h2 class="item-divider">{{item.category.name}}</h2>
         </ion-label>
       </ion-item-divider>
       <custom-item-list *ngFor="let product of item.products" [product]="product" (onClick)="onClick($event)"></custom-item-list>

@@ -5,6 +5,7 @@ import { MenuComponent } from './menu/menu.component';
 import { MenuRoutingModule } from './product-routing.module';
 import { SharedModule } from '../shared/shared/shared.module';
 import { ItemComponent } from './menu/custom/item/item.component';
+import { HeaderComponent } from './menu/custom/header/header.component';
 
 
 
@@ -17,7 +18,8 @@ import { ItemComponent } from './menu/custom/item/item.component';
   ],
   declarations: [
     MenuComponent,
-    ItemComponent
+    ItemComponent,
+    HeaderComponent
   ]
 })
 export class ProductModule { }
