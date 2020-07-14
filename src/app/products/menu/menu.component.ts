@@ -3,7 +3,6 @@ import { MenuService } from './menu.service';
 import { Menu } from 'src/app/models/menu.model';
 import { Router } from '@angular/router';
 import { ActionSheetController, Platform } from '@ionic/angular';
-import { platform } from 'process';
 
 @Component({
   selector: 'app-menu',
@@ -26,8 +25,7 @@ export class MenuComponent implements OnInit,AfterViewInit {
   }
 
   public onClick($event){
-    this.router.navigate(['/product'])
-    console.log($event)
+    this.router.navigate(['/product'],{fragment:$event})
   }
 
   async presentActionSheet() {
@@ -52,7 +50,7 @@ export class MenuComponent implements OnInit,AfterViewInit {
             console.log('Play clicked');
           }
         },{
-          text: 'Cancel',
+          text: 'Fechar',
           role: 'cancel',
           handler: () => {
             this.actionSheetController.dismiss()
@@ -82,7 +80,7 @@ export class MenuComponent implements OnInit,AfterViewInit {
             console.log('Play clicked');
           }
         },{
-          text: 'Cancel',
+          text: 'Fechar',
           icon:"close-outline",
           role: 'cancel',
           handler: () => {
