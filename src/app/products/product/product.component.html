@@ -1,8 +1,25 @@
 <ion-header color="dark">
   <ion-toolbar color="dark">
-    <ion-title>{{product.name}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-label>
+    <h1>{{product.name}}</h1>
+    <p>{{product.description}}</p>
+  </ion-label>
+  <custom-quantity (updateQuantity)="updateQuantity($event)"></custom-quantity>
+  <ion-item lines="none">
+    <ion-textarea placeholder="Observações" auto-grow="true"></ion-textarea>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="full" fill="solid" shape="round" color="primary">
+      ADICIONAR ● {{product.price * qntItem | currencyFormat}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

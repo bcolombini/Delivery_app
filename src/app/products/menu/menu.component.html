@@ -2,7 +2,7 @@
   <ion-toolbar color="dark">
     <ion-title>Cardápio</ion-title>
     <ion-buttons slot="end">
-      <ion-button color="light" (click)="presentActionSheet()"  >
+      <ion-button color="light" (click)="openActionSheet()"  >
         <ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <custom-header></custom-header>
+  <custom-header (click)="openAlertInformation()"></custom-header>
   <ion-virtual-scroll [items]="menu">
     <span *virtualItem="let item">
       <ion-item-divider color="light">

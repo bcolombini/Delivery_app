@@ -8,16 +8,17 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HidenavModule } from 'ionic4-hidenav';
 import { SharedModule } from './shared/shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 import { ProductComponent } from './products/product/product.component';
+import { QuantityComponent } from './products/product/custom/quantity/quantity.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent
+    ProductComponent,
+    QuantityComponent
   ],
   entryComponents: [],
   imports: [

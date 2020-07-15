@@ -7,3 +7,18 @@
     height: 100px;
     
 }
+
+ion-card-title{
+    --color:#333
+}
+
+.vertical-align-content > *
+{
+     display: flex!important;
+     align-content: center!important;
+     align-items: center!important;
+}
+
+ion-icon {
+    margin-bottom: -2px;
+}

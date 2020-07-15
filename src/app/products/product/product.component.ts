@@ -7,9 +7,12 @@ import { Product } from 'src/app/models/product.model';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss'],
 })
-export class ProductComponent implements OnInit,AfterViewInit {
+export class ProductComponent implements OnInit {
+
+  public qntItem:number = 1
 
   constructor(private route: ActivatedRoute) { }
+
   public product
   ngOnInit() {
     this.route.fragment.subscribe(
@@ -20,7 +23,7 @@ export class ProductComponent implements OnInit,AfterViewInit {
     )
   }
 
-  ngAfterViewInit(){
+  public updateQuantity(qntItem){
+    this.qntItem = qntItem;
   }
-
 }
