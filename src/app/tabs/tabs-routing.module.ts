@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { CartComponent } from '../cart/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,10 @@ const routes: Routes = [
       {
         path:"menu",
         loadChildren: () => import('../products/product.module').then(m => m.ProductModule)
+      },
+      {
+        path:"cart",
+        component: CartComponent
       },
       {
         path: '',

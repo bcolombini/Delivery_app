@@ -13,12 +13,12 @@
   </ion-label>
   <custom-quantity (updateQuantity)="updateQuantity($event)"></custom-quantity>
   <ion-item lines="none">
-    <ion-textarea placeholder="Observações" auto-grow="true"></ion-textarea>
+    <ion-textarea #observationTextArea placeholder="Observações" auto-grow="true"></ion-textarea>
   </ion-item>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button expand="full" fill="solid" shape="round" color="primary">
+    <ion-button (click)="addIntoCart()" expand="full" fill="solid" shape="round" color="primary">
       ADICIONAR ● {{product.price * qntItem | currencyFormat}}
     </ion-button>
   </ion-toolbar>

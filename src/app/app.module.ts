@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 import { ProductComponent } from './products/product/product.component';
 import { QuantityComponent } from './products/product/custom/quantity/quantity.component';
+import { CartModule } from './cart/cart/cart.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { QuantityComponent } from './products/product/custom/quantity/quantity.c
     IonicModule.forRoot(), 
     AppRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    CartModule
   ],
   providers: [
     
