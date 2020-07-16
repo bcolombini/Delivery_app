@@ -9,7 +9,7 @@
     <ion-label>
       <h2>{{order.product.name}}</h2>
       <p>Quantidades: {{order.qntItem}}</p>
-      <p>{{order.product.price | currencyFormat}}</p>
+      <p>{{order.product.price * order.qntItem | currencyFormat}}</p>
     </ion-label>
   </ion-item>
   <ion-item-options side="end">
