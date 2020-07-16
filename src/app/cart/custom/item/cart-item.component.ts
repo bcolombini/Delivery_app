@@ -33,8 +33,9 @@ export class CartItemComponent implements AfterViewInit{
   }
 
   public remove(){
-    this.cartService.removeQuantity(this.order)
-    if(this.order.qntItem == 0){
+    if(this.order.qntItem > 1){
+      this.cartService.removeQuantity(this.order)
+    } else {
       this.removeItem()
     }
   }
@@ -51,9 +52,6 @@ export class CartItemComponent implements AfterViewInit{
           cssClass: 'secondary',
           handler: () => {
             this.alertController.dismiss()
-            if(this.order.qntItem == 0){
-              this.cartService.addQuantity(this.order)
-            }
           }
         }, {
           text: 'Remover',
