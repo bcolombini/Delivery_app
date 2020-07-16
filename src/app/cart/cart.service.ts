@@ -8,7 +8,7 @@ import { Subject, Observable } from 'rxjs';
 export class CartService {
   
   public cartList:Order[] = new Array()
-  public cartSubject:Subject<Order[]> = new Subject<Order[]>()
+  private cartSubject:Subject<Order[]> = new Subject<Order[]>()
   constructor() { }
 
   public addIntoCart(order:Order) {

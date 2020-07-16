@@ -1,7 +1,7 @@
 <ion-item>
   <ion-label>
-    <h4>Subtotal: <div>R$ 100,00</div></h4>
-    <h4>Taxa de entrega: <div>R$ 100,00</div></h4>
-    <h1>Total: <div>R$ 100,00</div></h1>
+    <h4>Subtotal: <div>{{subTotal | currencyFormat}}</div></h4>
+    <h4>Taxa de entrega: <div>{{deliveryTax | currencyFormat}}</div></h4>
+    <h1>Total: <div>{{total | currencyFormat}}</div></h1>
   </ion-label>
 </ion-item>
