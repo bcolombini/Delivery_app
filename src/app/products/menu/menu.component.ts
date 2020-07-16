@@ -14,7 +14,9 @@ export class MenuComponent implements OnInit,AfterViewInit {
   public menu:Menu[];
 
 
-  constructor(private menuService:MenuService,private router:Router,private actionSheetController: ActionSheetController,private platform: Platform){ }
+  constructor(
+    private menuService:MenuService,
+    private router:Router){ }
 
   ngOnInit(){
   

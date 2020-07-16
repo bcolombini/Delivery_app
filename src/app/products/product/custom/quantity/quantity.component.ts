@@ -36,7 +36,7 @@ export class QuantityComponent {
   }
 
   public sendEventEmitter(){
-    this.updateQuantity.emit(this.qntItem.toString())
+    this.updateQuantity.emit(this.qntItem)
   }
 
 }

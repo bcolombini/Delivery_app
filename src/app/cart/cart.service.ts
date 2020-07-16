@@ -33,7 +33,7 @@ export class CartService {
   private hasSameItem(order:Order):boolean{
     for(let index in this.cartList){
       if(this.cartList[index].product.id == order.product.id){
-        this.cartList[index].qntItem ++
+        this.cartList[index].qntItem += order.qntItem
         this.cartList[index].observation = this.cartList[index].observation != ""?this.cartList[index].observation:order.observation
         return true
       }
