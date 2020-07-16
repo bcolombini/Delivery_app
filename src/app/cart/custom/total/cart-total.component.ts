@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
 import { CartService } from '../../cart.service';
 import { Order } from 'src/app/models/order.model';
 
@@ -7,12 +7,13 @@ import { Order } from 'src/app/models/order.model';
   templateUrl: './cart-total.component.html',
   styleUrls: ['./cart-total.component.scss'],
 })
-export class CartTotalComponent implements AfterViewInit {
+export class CartTotalComponent implements AfterContentInit {
 
   public cartList:Order[]
   public subTotal:number = 0;
   public deliveryTax:number = 890;
   public total:number = 0;
+
   constructor(private cartService:CartService) { 
   }
 
@@ -25,7 +26,7 @@ export class CartTotalComponent implements AfterViewInit {
     return subTotal.reduce((p,v)=>p+v)
   }
 
-  ngAfterViewInit(){
+  ngAfterContentInit(){
     this.subTotal = this.calculateTotal(this.cartService.cartList)
     this.total = this.subTotal+this.deliveryTax 
     this.cartService.getCartList().subscribe(value=>{

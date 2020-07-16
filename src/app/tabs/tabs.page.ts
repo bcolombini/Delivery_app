@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +8,12 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  public badgeSize:number = 0
+  constructor(private cartService: CartService) {
+    this.cartService.getCartList().subscribe(x=>{
+      this.badgeSize = 0;
+      x.map(v=>this.badgeSize += v.qntItem)
+    })
+  }
 
 }

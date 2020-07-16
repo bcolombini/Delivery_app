@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonTextarea, NavController } from '@ionic/angular';
+import { IonTextarea, NavController, AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../cart/cart.service';
 import { Order } from '../models/order.model';
@@ -18,7 +18,8 @@ export class EditComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService,
-    private navController: NavController
+    private navController: NavController,
+    private alertController: AlertController
     ) { }
 
   public order
@@ -43,5 +44,35 @@ export class EditComponent implements OnInit {
     orderItem.observation = this.observationTextArea.value
     this.cartService.updateItemIntoCart(orderItem)
     this.navController.back()
+  }
+
+  public removeItem(){
+    this.showAlertDialog()
+  }
+
+  async showAlertDialog() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Aviso',
+      message: 'Deseja remover o <b>'+this.order.product.name+'</b>',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            this.alertController.dismiss()
+          }
+        }, {
+          text: 'Remover',
+          handler: () => {
+            this.cartService.removeItem(this.order)
+            this.navController.back()
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 }

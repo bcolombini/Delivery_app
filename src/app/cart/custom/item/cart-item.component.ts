@@ -1,5 +1,5 @@
 import { Component, ViewChild, Output, Input, AfterViewInit, EventEmitter } from '@angular/core';
-import { IonButton,AlertController } from '@ionic/angular';
+import { IonButton,AlertController, IonItemSliding, IonItem } from '@ionic/angular';
 import { Order } from 'src/app/models/order.model';
 import { CartService } from '../../cart.service';
 import { Router } from '@angular/router';
