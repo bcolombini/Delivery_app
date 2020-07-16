@@ -3,15 +3,17 @@
     <ion-title>Carrinho</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
+  <custom-empty icon="cart" message="{{message}}" messageAction="{{messageAction}}" *ngIf="isEmpty"></custom-empty>
   <ion-list>
-    <ion-item-sliding *ngFor="let item of cartList">
-      <ion-item>
-        <ion-label>{{item.product.name}}</ion-label>
-      </ion-item>
-      <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="removeItem(item)"><ion-icon slot="icon-only" name="trash-outline"></ion-icon></ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
+    <custom-cart-item *ngFor="let order of cartList" [order]="order"></custom-cart-item>
   </ion-list>
 </ion-content>
+<ion-footer *ngIf="!isEmpty">
+  <ion-toolbar>
+    <ion-button (click)="finishOrder()" expand="full" fill="solid" color="primary" size="small">
+      Finalizar Pedido ● R$ 97,00
+    </ion-button>  
+  </ion-toolbar>
+</ion-footer>

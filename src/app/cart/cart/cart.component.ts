@@ -7,18 +7,28 @@ import { Order } from 'src/app/models/order.model';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements AfterViewInit{
 
   public cartList:Order[]
+  public message = "Não há nenhum produto no carrinho"
+  public messageAction = "Ir para cardápio"
+  public isEmpty = true
+
   constructor(private cartService: CartService) {
-      this.cartService.getCartList().subscribe(cartList =>{this.cartList = cartList;console.log(this.cartList)})
+    this.cartService.getCartList().subscribe(cartList =>{this.cartList = cartList;this.isEmpty = this.isEmptyCart()})
    }
 
    
-  ngOnInit() {
+  ngAfterViewInit() {
+    this.cartList = this.cartService.cartList
+    this.isEmpty = this.isEmptyCart()
   }
 
   public removeItem(item){
-    console.log(item)
+    this.cartService.removeItem(item)
+  }
+
+  private isEmptyCart(){
+    return this.cartList.length == 0
   }
 }

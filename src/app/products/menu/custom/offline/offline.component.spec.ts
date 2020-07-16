@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CartComponent } from './cart.component';
+import { OfflineComponent } from './offline.component';
 
-describe('CartComponent', () => {
-  let component: CartComponent;
-  let fixture: ComponentFixture<CartComponent>;
+describe('OfflineComponent', () => {
+  let component: OfflineComponent;
+  let fixture: ComponentFixture<OfflineComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CartComponent ],
+      declarations: [ OfflineComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CartComponent);
+    fixture = TestBed.createComponent(OfflineComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

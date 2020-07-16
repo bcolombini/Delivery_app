@@ -14,12 +14,18 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { ProductComponent } from './products/product/product.component';
 import { QuantityComponent } from './products/product/custom/quantity/quantity.component';
 import { CartModule } from './cart/cart/cart.module';
+import { PastOrdersComponent } from './past-orders/past-orders.component';
+import { ProfileComponent } from './profile/profile.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
-    QuantityComponent
+    QuantityComponent,
+    PastOrdersComponent,
+    ProfileComponent,
+    NotificationsComponent
   ],
   entryComponents: [],
   imports: [

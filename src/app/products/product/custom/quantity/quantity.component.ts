@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Output,EventEmitter } from '@angular/core';
+import { Component, ViewChild, Output,EventEmitter } from '@angular/core';
 import { IonButton } from '@ionic/angular';
 import {  } from 'events';
 
@@ -7,7 +7,7 @@ import {  } from 'events';
   templateUrl: './quantity.component.html',
   styleUrls: ['./quantity.component.scss'],
 })
-export class QuantityComponent implements OnInit {
+export class QuantityComponent {
 
   public qntItem: number = 1
   @ViewChild("subtractButton") subtractButton: IonButton
@@ -16,8 +16,6 @@ export class QuantityComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
-  }
 
   public add(){
     this.qntItem += 1

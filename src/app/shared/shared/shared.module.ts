@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import {HidenavModule} from 'ionic4-hidenav';
 import { TruncatePipe } from 'src/app/pipes/truncate.pipe';
 import { CurrencyFormatPipe } from 'src/app/pipes/currency-format.pipe';
+import { EmptyComponent } from 'src/app/custom/empty/empty.component';
 
 
 @NgModule({
   declarations:[
     TruncatePipe,
-    CurrencyFormatPipe],
+    CurrencyFormatPipe,
+    EmptyComponent
+  ],
   imports: [
     CommonModule,
     HidenavModule
@@ -16,6 +19,7 @@ import { CurrencyFormatPipe } from 'src/app/pipes/currency-format.pipe';
   exports:[
     HidenavModule,
     TruncatePipe,
-    CurrencyFormatPipe]
+    CurrencyFormatPipe,
+    EmptyComponent]
 })
 export class SharedModule { }

@@ -6,7 +6,7 @@ import { Subject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
-
+  
   public cartList:Order[] = new Array()
   public cartSubject:Subject<Order[]> = new Subject<Order[]>()
   constructor() { }
@@ -15,14 +15,22 @@ export class CartService {
     if(!this.hasSameItem(order)){
       this.cartList.push(order)
     }
-    this.cartSubject.next(this.cartList)
+    this.updateCart()
   }
 
   public getCartList():Observable<Order[]>{
     return this.cartSubject
   }
-  
-  public hasSameItem(order:Order):boolean{
+  public removeItem(item:Order){
+    this.cartList = this.cartList.filter((order)=>order != item)
+    this.updateCart()
+  }
+
+  private updateCart(){
+    this.cartSubject.next(this.cartList)
+  }
+
+  private hasSameItem(order:Order):boolean{
     for(let index in this.cartList){
       if(this.cartList[index].product.id == order.product.id){
         this.cartList[index].qntItem ++
@@ -31,6 +39,26 @@ export class CartService {
       }
     }
     return false;
+  }
+
+  removeQuantity(item:Order) {
+    this.cartList = this.cartList.map(value=>{
+      if(item.product.id == value.product.id){
+        value.qntItem--
+      }
+      return value
+    })
+    this.updateCart()
+  }
+
+  addQuantity(item:Order) {
+    this.cartList = this.cartList.map(value=>{
+      if(item.product.id == value.product.id){
+        value.qntItem++
+      }
+      return value
+    })
+    this.updateCart()
   }
 
 }
