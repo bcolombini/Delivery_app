@@ -17,6 +17,7 @@ import { CartModule } from './cart/cart/cart.module';
 import { PastOrdersComponent } from './past-orders/past-orders.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
     QuantityComponent,
     PastOrdersComponent,
     ProfileComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    EditComponent
   ],
   entryComponents: [],
   imports: [

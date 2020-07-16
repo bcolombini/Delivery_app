@@ -18,6 +18,16 @@ export class CartService {
     this.updateCart()
   }
 
+  public updateItemIntoCart(order:Order){
+    this.cartList = this.cartList.map((value)=>{
+      if(value.product.id == order.product.id){
+        return order
+      }
+      return value
+    })
+    this.updateCart()
+  }
+
   public getCartList():Observable<Order[]>{
     return this.cartSubject
   }

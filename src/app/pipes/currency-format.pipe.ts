@@ -6,7 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class CurrencyFormatPipe implements PipeTransform {
 
   transform(value: number, ...args: unknown[]): unknown {
-    value = value/100
+    if(value == 0){
+      value = 0
+    } else {
+      value = value/100
+    }
     return value.toLocaleString("pt-BR",{
       style: "currency",
       currency: "BRL"

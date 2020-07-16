@@ -6,7 +6,7 @@
 
 <ion-content>
   <custom-empty icon="cart" message="{{message}}" messageAction="{{messageAction}}" *ngIf="isEmpty"></custom-empty>
-  <ion-list>
+  <ion-list *ngIf="!isEmpty">
     <ion-item-divider>
       <ion-label>Pedidos</ion-label>
     </ion-item-divider>

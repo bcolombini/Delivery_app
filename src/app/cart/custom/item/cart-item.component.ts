@@ -1,7 +1,8 @@
 import { Component, ViewChild, Output, Input, AfterViewInit, EventEmitter } from '@angular/core';
-import { IonButton,AlertController  } from '@ionic/angular';
+import { IonButton,AlertController } from '@ionic/angular';
 import { Order } from 'src/app/models/order.model';
 import { CartService } from '../../cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'custom-cart-item',
@@ -19,9 +20,14 @@ export class CartItemComponent implements AfterViewInit{
 
   constructor(
     private cartService: CartService,
-    private alertController: AlertController) { }
+    private alertController: AlertController,
+    private route: Router) { }
 
   ngAfterViewInit(){
+  }
+
+  public onClick($event){
+    this.route.navigate(['/edit'],{fragment:$event})
   }
 
   public removeItem(){

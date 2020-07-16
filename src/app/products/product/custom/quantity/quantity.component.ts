@@ -1,4 +1,4 @@
-import { Component, ViewChild, Output,EventEmitter } from '@angular/core';
+import { Component, ViewChild, Output,EventEmitter, Input, AfterViewInit } from '@angular/core';
 import { IonButton } from '@ionic/angular';
 import {  } from 'events';
 
@@ -7,15 +7,20 @@ import {  } from 'events';
   templateUrl: './quantity.component.html',
   styleUrls: ['./quantity.component.scss'],
 })
-export class QuantityComponent {
+export class QuantityComponent implements AfterViewInit {
 
-  public qntItem: number = 1
   @ViewChild("subtractButton") subtractButton: IonButton
   @ViewChild("addButton") addButton: IonButton
+  @Input("qntItem") qntItem:number
   @Output("updateQuantity") updateQuantity = new EventEmitter()
 
   constructor() { }
 
+  ngAfterViewInit(){
+    if(this.qntItem > 1){
+      this.subtractButton.disabled = false
+    }
+  }
 
   public add(){
     this.qntItem += 1

@@ -8,18 +8,18 @@
 
 <ion-content>
   <ion-label>
-    <h1>{{product.name}}</h1>
-    <p>{{product.description}}</p>
+    <h1>{{order.product.name}}</h1>
+    <p>{{order.product.description}}</p>
   </ion-label>
-  <custom-quantity (updateQuantity)="updateQuantity($event)" [qntItem]="qntItem"></custom-quantity>
+  <custom-quantity (updateQuantity)="updateQuantity($event)" [qntItem]="this.qntItem"></custom-quantity>
   <ion-item lines="none">
     <ion-textarea #observationTextArea placeholder="Observações" auto-grow="true"></ion-textarea>
   </ion-item>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button (click)="addIntoCart()" expand="full" fill="solid" shape="round" color="dark">
-      ADICIONAR ● {{product.price * qntItem | currencyFormat}}
+    <ion-button (click)="updateItemInCart()" expand="full" fill="solid" shape="round" color="dark">
+      Alterar Pedido
     </ion-button>
   </ion-toolbar>
 </ion-footer>
