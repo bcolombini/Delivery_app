@@ -1,0 +1,28 @@
+ion-item {
+    --inner-padding-start: 10px;
+    --padding-start: 0px;
+    --background:#f9f9f9;
+}
+
+ion-input {
+    --background: #3880ff;
+    --color: #ffffff;
+    --padding-bottom: 4px;
+    --padding-end: 4px;
+    --padding-start: 4px;
+    --padding-top: 4px;
+    --placeholder-color: #3880ff;
+    --placeholder-font-style: initial;
+}
+
+p{
+    color: #333;
+}
+h3{
+    color: #9f9f9f;
+    margin: 10px 0 3px;
+}
+h3 div{
+    display: inline-flex;
+    float: right;
+}

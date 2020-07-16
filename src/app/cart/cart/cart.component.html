@@ -7,13 +7,27 @@
 <ion-content>
   <custom-empty icon="cart" message="{{message}}" messageAction="{{messageAction}}" *ngIf="isEmpty"></custom-empty>
   <ion-list>
+    <ion-item-divider>
+      <ion-label>Pedidos</ion-label>
+    </ion-item-divider>
     <custom-cart-item *ngFor="let order of cartList" [order]="order"></custom-cart-item>
+    <custom-cart-item *ngFor="let order of cartList" [order]="order"></custom-cart-item>
+    <custom-cart-item *ngFor="let order of cartList" [order]="order"></custom-cart-item>
+  <custom-cart-total></custom-cart-total>
+  <ion-item-divider>
+    <ion-label>Endereço</ion-label>
+  </ion-item-divider>
+  <custom-cart-address></custom-cart-address>
+  <ion-item-divider>
+    <ion-label>Promoção</ion-label>
+  </ion-item-divider>
+  <custom-cart-cupom></custom-cart-cupom>
   </ion-list>
 </ion-content>
 <ion-footer *ngIf="!isEmpty">
   <ion-toolbar>
-    <ion-button (click)="finishOrder()" expand="full" fill="solid" color="primary" size="small">
-      Finalizar Pedido ● R$ 97,00
+    <ion-button (click)="finishOrder()" expand="full" fill="solid" color="dark">
+      Avançar
     </ion-button>  
   </ion-toolbar>
 </ion-footer>
