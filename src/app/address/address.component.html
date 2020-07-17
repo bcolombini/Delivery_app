@@ -24,6 +24,12 @@
     <ion-input placeholder="Número"></ion-input>
   </ion-item>
   <ion-item>
+    <ion-input placeholder="Complemento"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Bairro"></ion-input>
+  </ion-item>
+  <ion-item>
     <ion-input placeholder="Cidade"></ion-input>
   </ion-item>
   <ion-item>
@@ -33,3 +39,10 @@
     <ion-input placeholder="CEP"></ion-input>
   </ion-item>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="saveAddress()" expand="full" fill="solid" color="dark">
+      Salvar Endereço
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

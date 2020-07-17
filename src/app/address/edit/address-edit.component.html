@@ -1,3 +1,45 @@
-<p>
-  edit works!
-</p>
+<ion-header color="dark">
+  <ion-toolbar color="dark">
+    <ion-title>Endereço</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item-divider>
+    <ion-label>Apelido para o Endereço</ion-label>
+  </ion-item-divider>
+  <ion-item>
+    <ion-input placeholder="Ex: Minha casa"></ion-input>
+  </ion-item>
+  <ion-item-divider>
+    <ion-label>Endereço</ion-label>
+  </ion-item-divider>
+  <ion-item>
+    <ion-input placeholder="Rua"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-input placeholder="Número"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Cidade"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="Estado"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input placeholder="CEP"></ion-input>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="deleteAddress()" expand="full" fill="solid" color="dark">
+      Deletar Endereço
+    </ion-button>
+    <ion-button (click)="saveAddress()" expand="full" fill="solid" color="dark">
+      Salvar Endereço
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
