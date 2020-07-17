@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { AddressClass } from './address.class';
 import { AddressService } from './address.service';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'app-address',
@@ -10,8 +11,8 @@ import { AddressService } from './address.service';
 })
 export class AddressComponent extends AddressClass implements OnInit {
 
-  constructor(navController:NavController, addressService:AddressService) {
-    super(navController,addressService);
+  constructor(navController:NavController, addressService:AddressService, storage:Storage) {
+    super(navController,addressService,storage);
   }
 
   ngOnInit() {}

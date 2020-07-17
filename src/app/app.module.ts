@@ -20,6 +20,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { OrderEditComponent } from './edit/order-edit.component';
 import { AddressComponent } from './address/address.component';
 import { AddressEditComponent } from './address/edit/address-edit.component';
+import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AddressEditComponent } from './address/edit/address-edit.component';
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
+    IonicStorageModule.forRoot(),
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
