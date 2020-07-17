@@ -17,7 +17,9 @@ import { CartModule } from './cart/cart/cart.module';
 import { PastOrdersComponent } from './past-orders/past-orders.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NotificationsComponent } from './notifications/notifications.component';
-import { EditComponent } from './edit/edit.component';
+import { OrderEditComponent } from './edit/order-edit.component';
+import { AddressComponent } from './address/address.component';
+import { AddressEditComponent } from './address/edit/address-edit.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { EditComponent } from './edit/edit.component';
     PastOrdersComponent,
     ProfileComponent,
     NotificationsComponent,
-    EditComponent
+    OrderEditComponent,
+    AddressComponent,
+    AddressEditComponent
   ],
   entryComponents: [],
   imports: [

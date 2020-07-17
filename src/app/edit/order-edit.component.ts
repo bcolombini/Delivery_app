@@ -6,10 +6,10 @@ import { Order } from '../models/order.model';
 
 @Component({
   selector: 'app-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss'],
+  templateUrl: './order-edit.component.html',
+  styleUrls: ['./order-edit.component.scss'],
 })
-export class EditComponent implements OnInit {
+export class OrderEditComponent implements OnInit {
 
   @ViewChild("observationTextArea") observationTextArea:IonTextarea
   

@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ProductComponent } from './products/product/product.component';
-import { EditComponent } from './edit/edit.component';
+import { OrderEditComponent } from './edit/order-edit.component';
+import { AddressComponent } from './address/address.component';
 
 const routes: Routes = [
   {
@@ -14,7 +15,11 @@ const routes: Routes = [
   },
   {
     path:'edit',
-    component:EditComponent
+    component:OrderEditComponent
+  },
+  {
+    path:'address',
+    component:AddressComponent
   }
 ];
 @NgModule({

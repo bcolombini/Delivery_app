@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/cor
 import { CartService } from '../cart.service';
 import { Order } from 'src/app/models/order.model';
 import { ChipEnum } from 'src/app/enums/chip.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +16,9 @@ export class CartComponent implements AfterViewInit{
   public messageAction = "Ir para cardápio"
   public isEmpty = true
 
-  constructor(private cartService: CartService) {
+  constructor(
+    private cartService: CartService,
+    private route:Router) {
    }
 
   ngAfterViewInit(){
@@ -25,6 +28,10 @@ export class CartComponent implements AfterViewInit{
       this.cartList = cartList;
       this.isEmpty = this.isEmptyCart();
     })
+  }
+
+  public goToAddress(){
+    this.route.navigate(["/address"])
   }
 
   public removeItem(item){
