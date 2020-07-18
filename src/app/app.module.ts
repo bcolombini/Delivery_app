@@ -14,21 +14,19 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { ProductComponent } from './products/product/product.component';
 import { QuantityComponent } from './products/product/custom/quantity/quantity.component';
 import { CartModule } from './cart/cart/cart.module';
-import { PastOrdersComponent } from './past-orders/past-orders.component';
-import { ProfileComponent } from './profile/profile.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { OrderEditComponent } from './edit/order-edit.component';
 import { AddressComponent } from './address/address.component';
 import { AddressEditComponent } from './address/edit/address-edit.component';
 import { IonicStorageModule } from '@ionic/storage';
+import { ProfileModule } from './profile/profile.module';
+import { PastOrdersModule } from './past-orders/past-orders.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     QuantityComponent,
-    PastOrdersComponent,
-    ProfileComponent,
     NotificationsComponent,
     OrderEditComponent,
     AddressComponent,
@@ -42,7 +40,9 @@ import { IonicStorageModule } from '@ionic/storage';
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    CartModule
+    CartModule,
+    ProfileModule,
+    PastOrdersModule
   ],
   providers: [
     

@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angula
 import { MenuService } from './menu.service';
 import { Menu } from 'src/app/models/menu.model';
 import { Router } from '@angular/router';
-import { ActionSheetController, Platform } from '@ionic/angular';
+import { ActionSheetController, Platform, IonRefresherContent, IonRefresher, AlertController } from '@ionic/angular';
+import { ConnectionException } from 'src/app/Exception/connection.exception';
 
 @Component({
   selector: 'app-menu',
@@ -16,14 +17,20 @@ export class MenuComponent implements OnInit,AfterViewInit {
 
   constructor(
     private menuService:MenuService,
-    private router:Router){ }
+    private router:Router,
+    private alertController:AlertController){ }
 
   ngOnInit(){
   
   }
 
+  async doRefresh(event){
+    this.updateMenu()
+    event.target.complete()
+  }
+  
   async ngAfterViewInit(){
-    this.menu = await this.menuService.getProductList().toPromise() as Menu[]
+    this.updateMenu()
   }
 
   public onClick($event){
@@ -36,6 +43,22 @@ export class MenuComponent implements OnInit,AfterViewInit {
 
   public openAlertInformation(){
     this.menuService.presentAlert()
+  }
+
+  async updateMenu(){
+    try{
+      this.menu = await this.menuService.getProductList().toPromise() as Menu[]
+      console.log("ERROR")
+      } catch {
+        const alert = await this.alertController.create({
+          cssClass: 'my-custom-class',
+          header: 'Aviso',
+          message: 'Ocorreu um erro. Tente novamente',
+          buttons: ['Fechar']
+        });
+        await alert.present();
+        
+      }
   }
 
 }

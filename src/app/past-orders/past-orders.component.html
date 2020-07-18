@@ -5,5 +5,6 @@
 </ion-header>
 
 <ion-content>
-  <custom-empty icon='refresh' message='Não existe histórico de pedidos' messageAction='Faça seu primeiro pedido'></custom-empty>
+  <custom-empty icon='refresh' message='Não existe histórico de pedidos' messageAction='Faça seu primeiro pedido' *ngIf="false"></custom-empty>
+  <custom-past-order-item *ngFor="let i of [1,1,1,1,1,1]"></custom-past-order-item>
 </ion-content>

@@ -10,6 +10,7 @@ import { from } from 'rxjs';
 export class MenuService {
 
   private productURL = "https://run.mocky.io/v3/92cd4e1d-4a33-46f1-a82a-6b5633585574"
+  private informationUrl = ""
 
   constructor(
     private nativeHttp: HTTP, 
