@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterContentInit, ChangeDetectorRef } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Order } from 'src/app/models/order.model';
 import { ChipEnum } from 'src/app/enums/chip.enum';
@@ -18,7 +18,8 @@ export class CartComponent implements AfterViewInit{
 
   constructor(
     private cartService: CartService,
-    private route:Router) {
+    private route:Router,
+    private changeDetectorRef:ChangeDetectorRef) {
    }
 
   ngAfterViewInit(){
@@ -27,6 +28,7 @@ export class CartComponent implements AfterViewInit{
     this.cartService.getCartList().subscribe(cartList =>{  
       this.cartList = cartList;
       this.isEmpty = this.isEmptyCart();
+      this.changeDetectorRef.detectChanges()
     })
   }
 

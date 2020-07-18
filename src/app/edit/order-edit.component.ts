@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { IonTextarea, NavController, AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from '../cart/cart.service';
@@ -9,11 +9,12 @@ import { Order } from '../models/order.model';
   templateUrl: './order-edit.component.html',
   styleUrls: ['./order-edit.component.scss'],
 })
-export class OrderEditComponent implements OnInit {
+export class OrderEditComponent implements AfterViewInit {
 
   @ViewChild("observationTextArea") observationTextArea:IonTextarea
   
   public qntItem:number = 1
+  public observation?:string;
   
   constructor(
     private route: ActivatedRoute,
@@ -29,8 +30,13 @@ export class OrderEditComponent implements OnInit {
       x=> {
         this.order = x
         this.qntItem = this.order.qntItem
+        this.observation = this.order.observation
       }
     )
+  }
+
+  ngAfterViewInit(){
+    this.observationTextArea.value = this.observation
   }
 
   public updateQuantity(qntItem){
