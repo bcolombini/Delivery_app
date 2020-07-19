@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Order } from 'src/app/models/order.model';
 
 @Component({
   selector: 'custom-past-order-item',
@@ -13,13 +14,12 @@ export class PastOrderItemComponent implements OnInit {
 
   ngOnInit() {}
 
-  cc(){
-    this.show = !this.show
-    if(this.show){
-      this.icon = "chevron-up-outline"
-    } else {
-      this.icon = "chevron-down-outline"
-    }
+  showMore(orderId:number){
+    console.log("TODO SHOW MORE")
+  }
+
+  reOrder(item:Order){
+    console.log("TODO REORDER ACTION")
   }
 
 }
