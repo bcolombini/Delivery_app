@@ -1,26 +1,19 @@
 <ion-item-divider lines="none">
-  <ion-label>Dom - 19 julho 2020</ion-label>
+  <ion-label>{{pastOrder.date}}</ion-label>
 </ion-item-divider>
-<ion-card>
+<ion-card *ngFor="let pOrder of pastOrder.past_orders">
   <ion-card-content>
-   
-    <ion-item *ngFor="let item of order">
+    <ion-item *ngFor="let order of pOrder.orders">
       <ion-label>
-        <h3>Combo 7 (100 peças) <div>R$ 81,00</div></h3>
-        <h4>Quantidades: 3</h4>
-      </ion-label>
-    </ion-item>
-    
-    <ion-item>
-      <ion-label>
-        <h3>Combo 7 (100 peças) <div>R$ 81,00</div></h3>
-        <h4>Quantidades: 3</h4>
+        <h3>{{order.product.name}} <div>{{order.product.price | currencyFormat}}</div></h3>
+        <h4>Quantidades: {{order.qntItem}}</h4>
       </ion-label>
     </ion-item>
 
-  <custom-past-order-show-more (onClick)="showMore(order.id)"></custom-past-order-show-more>
 
-  <custom-past-order-total [order]="order"></custom-past-order-total>
+<!--  <custom-past-order-show-more *ngIf="pOrder.orders.length > 3" (onClick)="showMore(order.id)"></custom-past-order-show-more>-->
+
+  <custom-past-order-total [orders]="pOrder.orders"></custom-past-order-total>
   <custom-past-order-re-order-button (onClick)="reOrder(order)"></custom-past-order-re-order-button>
   </ion-card-content>
 </ion-card>

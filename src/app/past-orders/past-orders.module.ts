@@ -5,6 +5,8 @@ import { PastOrderItemComponent } from './custom/past-order-item/past-order-item
 import { PastOrderReOrderButtonComponent } from './custom/past-order-re-order-button/past-order-re-order-button.component';
 import { PastOrderShowMoreComponent } from './custom/past-order-show-more/past-order-show-more.component';
 import { PastOrderTotalComponent } from './custom/past-order-total/past-order-total.component';
+import {SharedModule} from "../shared/shared/shared.module";
+import {IonicModule} from "@ionic/angular";
 
 
 
@@ -17,7 +19,9 @@ import { PastOrderTotalComponent } from './custom/past-order-total/past-order-to
     PastOrderTotalComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    IonicModule
   ]
 })
 export class PastOrdersModule { }

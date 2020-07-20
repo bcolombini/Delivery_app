@@ -3,42 +3,32 @@ import { Platform, AlertController, ActionSheetController } from '@ionic/angular
 import { HttpClient } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 import { from } from 'rxjs';
+import {URLConstants} from "../../constants/URLConstants";
+import {TextConstants} from "../../constants/TextConstants";
+import {HttpService} from "../../service/http.service";
+import {Menu} from "../../models/menu.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
 
-  private productURL = "https://run.mocky.io/v3/92cd4e1d-4a33-46f1-a82a-6b5633585574"
-  private informationUrl = ""
+  private productURL = URLConstants.MENU
+  private informationUrl = URLConstants.INFORMATION
 
   constructor(
-    private nativeHttp: HTTP, 
-    private standartHttp:HttpClient ,
+    private httpService: HttpService,
     private platform:Platform,
     private alertController:AlertController,
     private actionSheetController:ActionSheetController) {}
 
-  public getProductList() {
-    return this.isNativeRequest()?this.nativeProductRequest():this.standartProductRequest()
-  }
-
-  private isNativeRequest(){
-    return this.platform.is("cordova")
-  }
-
-  private standartProductRequest(){
-    return this.standartHttp.get(this.productURL)
-  }
-
-  private nativeProductRequest(){
-    let nativeResquest = this.nativeHttp.get(this.productURL,{},{}).then(x=>{return JSON.parse(x.data)})
-    return from(nativeResquest)
+  public async getProductList() {
+    return await this.httpService.getRequest(this.productURL).toPromise() as Menu[]
   }
 
   public async presentAlert() {
     const alert = await this.alertController.create({
-      header: 'Horario de funcionamento',
+      header: TextConstants.WORK_HOUR,
       message: 'Segunda a Sábado de 18:00 às 00:00 <br/>Terça 18:00 às 00:00 <br />Quarta 18:00 às 00:00<br />Quinta 18:00 às 00:00<br />Sexta 18:00 às 00:00<br />Sábado 18:00 às 00:00<br />Domingo Fechado'
     });
     await alert.present();
@@ -48,25 +38,25 @@ export class MenuService {
     let actionSheet
     if(this.platform.is("ios")){
       actionSheet = await this.actionSheetController.create({
-        header: 'Delivery',
+        header: TextConstants.DELIVERY,
         cssClass: 'my-custom-class',
         buttons: [{
-          text: 'Informações',
+          text: TextConstants.INFORMATIONS,
           handler: () => {
             console.log('Delete clicked');
           }
         }, {
-          text: 'Ver área de entrega',
+          text: TextConstants.DELIVERY_AREA,
           handler: () => {
             console.log('Share clicked');
           }
         }, {
-          text: 'Sobre nós',
+          text: TextConstants.ABOUT_US,
           handler: () => {
             console.log('Play clicked');
           }
         },{
-          text: 'Fechar',
+          text: TextConstants.CLOSE,
           role: 'cancel',
           handler: () => {
             this.actionSheetController.dismiss()
@@ -75,28 +65,28 @@ export class MenuService {
       });
     } else{
       actionSheet = await this.actionSheetController.create({
-        header: 'Delivery',
+        header: TextConstants.DELIVERY,
         cssClass: 'my-custom-class',
         buttons: [{
-          text: 'Informações',
+          text: TextConstants.INFORMATIONS,
           icon:'information',
           handler: () => {
             console.log('Delete clicked');
           }
         }, {
-          text: 'Ver área de entrega',
+          text: TextConstants.DELIVERY_AREA,
           icon: "navigate-outline",
           handler: () => {
             console.log('Share clicked');
           }
         }, {
-          text: 'Sobre nós',
+          text: TextConstants.ABOUT_US,
           icon:'information',
           handler: () => {
             console.log('Play clicked');
           }
         },{
-          text: 'Fechar',
+          text: TextConstants.CLOSE,
           icon:"close-outline",
           role: 'cancel',
           handler: () => {

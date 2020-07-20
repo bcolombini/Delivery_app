@@ -1,0 +1,72 @@
+[
+  {
+    "category": {
+      "id": 0,
+      "name": "Destaque"
+    },
+    "products": [
+      {
+        "id": 0,
+        "name": "Combo 7 (100 peças)",
+        "description": "10 Sashimi de Ice, 5 Sashimi de Salmão, 20 Hot Philadelfia, 30 Temakis",
+        "price": 9700,
+        "chip": {
+          "type": "0",
+          "message": "Mais pedido"
+        }
+      },
+      {
+        "id": 1,
+        "name": "Combo 5 premium (100 peças)",
+        "description": "10 Sashimi de Ice, 5 Sashimi de Salmão, 20 Hot Philadelfia, 30 Temakis",
+        "price": 11300,
+        "chip": {
+          "type": "1",
+          "message": "Sugestão da casa"
+        }
+      }
+    ]
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Combinados"
+    },
+    "products": [
+      {
+        "id": 2,
+        "name": "Combo 7 (100 peças)",
+        "description": "10 Sashimi de Ice, 5 Sashimi de Salmão, 20 Hot Philadelfia, 30 Temakis",
+        "price": 9700,
+        "chip": {
+          "type": "0",
+          "message": "Mais pedido"
+        }
+      },
+      {
+        "id": 3,
+        "name": "Combo 5 premium (100 peças)",
+        "description": "10 Sashimi de Ice, 5 Sashimi de Salmão, 20 Hot Philadelfia, 30 Temakis",
+        "price": 11300,
+        "chip": {
+          "type": "1",
+          "message": "Sugestão da casa"
+        }
+      }
+    ]
+  },
+  {
+    "category": {
+      "id": 1,
+      "name": "Porções"
+    },
+    "products": [
+      {
+        "id": 4,
+        "name": "Porção Shitake",
+        "description": "Fatiada e grelada ao alho, manteiga e cebolinha",
+        "price": 3300
+      }
+    ]
+  }
+]

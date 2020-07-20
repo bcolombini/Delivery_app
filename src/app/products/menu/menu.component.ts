@@ -1,16 +1,15 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { MenuService } from './menu.service';
 import { Menu } from 'src/app/models/menu.model';
 import { Router } from '@angular/router';
-import { ActionSheetController, Platform, IonRefresherContent, IonRefresher, AlertController } from '@ionic/angular';
-import { ConnectionException } from 'src/app/Exception/connection.exception';
+import {AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements OnInit,AfterViewInit {
+export class MenuComponent implements AfterViewInit {
 
   public menu:Menu[];
 
@@ -20,36 +19,33 @@ export class MenuComponent implements OnInit,AfterViewInit {
     private router:Router,
     private alertController:AlertController){ }
 
-  ngOnInit(){
-  
-  }
 
   async doRefresh(event){
-    this.updateMenu()
+    await this.updateMenu()
     event.target.complete()
   }
   
   async ngAfterViewInit(){
-    this.updateMenu()
+    await this.updateMenu()
   }
 
   public onClick($event){
-    this.router.navigate(['/product'],{fragment:$event})
+    this.router.navigate(['/product'],{fragment:$event}).then()
   }
 
   public openActionSheet(){
-    this.menuService.presentActionSheet()
+    this.menuService.presentActionSheet().then()
   }
 
   public openAlertInformation(){
-    this.menuService.presentAlert()
+    this.menuService.presentAlert().then()
   }
 
   async updateMenu(){
     try{
-      this.menu = await this.menuService.getProductList().toPromise() as Menu[]
-      console.log("ERROR")
+        this.menu = await this.menuService.getProductList()
       } catch {
+        console.log("ERROR")
         const alert = await this.alertController.create({
           cssClass: 'my-custom-class',
           header: 'Aviso',

@@ -9,8 +9,8 @@ import { Order } from 'src/app/models/order.model';
 })
 export class CartTotalComponent implements AfterContentInit {
 
-  public cartList:Order[]
   public subTotal:number = 0;
+  //todo get from information deliveryTax
   public deliveryTax:number = 890;
   public total:number = 0;
 

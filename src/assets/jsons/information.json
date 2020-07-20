@@ -1,0 +1,49 @@
+{
+  "establishment_name": "Delivery App",
+  "today": {
+    "week_day": 0,
+    "week_name": "Segunda-feira",
+    "work_open": "18:00",
+    "work_close": "01:00"
+  },
+  "week_work": [
+    {
+      "week_day": 0,
+      "week_name": "Segunda-feira",
+      "work_open": "18:00",
+      "work_close": "01:00"
+    },{
+      "week_day": 1,
+      "week_name": "Terça-feira",
+      "work_open": "18:00",
+      "work_close": "01:00"
+    },{
+      "week_day": 2,
+      "week_name": "Quarta-feira",
+     "work_open": "18:00",
+      "work_close": "01:00"
+    },{
+      "week_day": 3,
+      "week_name": "Quinta-feira",
+      "work_open": "18:00",
+      "work_close": "01:00"
+    },{
+      "week_day": 4,
+      "week_name": "sexta-feira",
+      "work_open": "18:00",
+      "work_close": "01:00"
+    },{
+      "week_day": 5,
+      "week_name": "Sábado",
+      "work_open": "18:00",
+      "work_close": "01:00"
+    },{
+      "week_day": 6,
+      "week_name": "Domingo",
+      "work_open": "18:00",
+      "work_close": "01:00"
+    }],
+  "work_compile": "Segunda a Sábado de 18:00 às 00:00 <br/>Terça 18:00 às 00:00 <br />Quarta 18:00 às 00:00<br />Quinta 18:00 às 00:00<br />Sexta 18:00 às 00:00<br />Sábado 18:00 às 00:00<br />Domingo Fechado",
+  "delivery_fee": 890,
+  "delivery_time": "30-40min"
+}

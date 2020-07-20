@@ -7,7 +7,7 @@ import { ChipEnum } from 'src/app/enums/chip.enum';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss'],
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent{
 
   @Input("product") public product:Product;
   @Output("onClick") onClickEvent = new EventEmitter();
@@ -15,10 +15,6 @@ export class ItemComponent implements OnInit {
   public chipStyle = ChipEnum
   
   constructor() { }
-
-  ngOnInit() {
-    console.log(this.chipStyle[0])
-  }
 
   public onClick(){
     this.onClickEvent.emit(this.product)

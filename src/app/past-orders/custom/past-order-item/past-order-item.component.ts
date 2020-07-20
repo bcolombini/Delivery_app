@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Order } from 'src/app/models/order.model';
+import {Component, Input, OnInit} from '@angular/core';
+import {Order, PastOrders} from 'src/app/models/order.model';
 
 @Component({
   selector: 'custom-past-order-item',
@@ -7,9 +7,11 @@ import { Order } from 'src/app/models/order.model';
   styleUrls: ['./past-order-item.component.scss'],
 })
 export class PastOrderItemComponent implements OnInit {
+
+  @Input("pastOrder") pastOrder:PastOrders
+
   public show = false;
   public icon = "chevron-down-outline"
-  public a = [1,1,1,1]
   constructor() { }
 
   ngOnInit() {}
