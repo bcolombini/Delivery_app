@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HTTP} from "@ionic-native/http/ngx";
 import {HttpClient} from "@angular/common/http";
-import {Platform} from "@ionic/angular";
+import {LoadingController, Platform} from "@ionic/angular";
 import {from} from "rxjs";
 
 @Injectable({
@@ -12,7 +12,7 @@ export class HttpService {
   constructor(
       private nativeHttp: HTTP,
       private standardHttp:HttpClient,
-      private platform:Platform,) {}
+      private platform:Platform) {}
 
   public getRequest(url:string) {
     return this.isNativeRequest()?this.nativeRequest(url):this.standardRequest(url)

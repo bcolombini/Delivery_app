@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Platform, AlertController, ActionSheetController } from '@ionic/angular';
+import {Platform, AlertController, ActionSheetController, LoadingController} from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { HTTP } from '@ionic-native/http/ngx';
 import { from } from 'rxjs';
@@ -13,8 +13,7 @@ import {Menu} from "../../models/menu.model";
 })
 export class MenuService {
 
-  private productURL = URLConstants.MENU
-  private informationUrl = URLConstants.INFORMATION
+
 
   constructor(
     private httpService: HttpService,
@@ -23,13 +22,17 @@ export class MenuService {
     private actionSheetController:ActionSheetController) {}
 
   public async getProductList() {
-    return await this.httpService.getRequest(this.productURL).toPromise() as Menu[]
+    return await this.httpService.getRequest(URLConstants.MENU).toPromise() as Menu[]
+  }
+
+  public async getInformation(){
+    // return await this.informationService()
   }
 
   public async presentAlert() {
     const alert = await this.alertController.create({
       header: TextConstants.WORK_HOUR,
-      message: 'Segunda a Sábado de 18:00 às 00:00 <br/>Terça 18:00 às 00:00 <br />Quarta 18:00 às 00:00<br />Quinta 18:00 às 00:00<br />Sexta 18:00 às 00:00<br />Sábado 18:00 às 00:00<br />Domingo Fechado'
+      message: 'Segunda de 18:00 às 00:00 <br/>Terça 18:00 às 00:00 <br />Quarta 18:00 às 00:00<br />Quinta 18:00 às 00:00<br />Sexta 18:00 às 00:00<br />Sábado 18:00 às 00:00<br />Domingo Fechado'
     });
     await alert.present();
   }

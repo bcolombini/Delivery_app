@@ -4,6 +4,7 @@ export const TextConstants = {
     INFORMATIONS:"Informações",
     DELIVERY_AREA:"Ver área de entrega",
     CLOSE:"Fechar",
-    ABOUT_US:"Sobre nós"
+    ABOUT_US:"Sobre nós",
+    LOADING:"Carregando"
 
 }

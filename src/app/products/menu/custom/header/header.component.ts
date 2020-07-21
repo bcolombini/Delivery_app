@@ -1,5 +1,6 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, ViewChild, AfterViewInit, ElementRef, Input} from '@angular/core';
 import { IonImg } from '@ionic/angular';
+import {Information} from "../../../../models/information.model";
 
 @Component({
   selector: 'custom-header',
@@ -9,6 +10,7 @@ import { IonImg } from '@ionic/angular';
 export class HeaderComponent implements OnInit{
 
   @ViewChild("ionImgFinal") ionImage: ElementRef
+  @Input("information") information: Information
 
   constructor() { }
 

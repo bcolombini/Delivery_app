@@ -18,7 +18,7 @@
       refreshingText="Carregando...">
     </ion-refresher-content>
   </ion-refresher>
-  <custom-header (click)="openAlertInformation()"></custom-header>
+  <custom-header *ngIf="information" (click)="openAlertInformation()" [information]="information"></custom-header>
   <ion-virtual-scroll [items]="menu">
     <span *virtualItem="let item">
       <ion-item-divider color="light">

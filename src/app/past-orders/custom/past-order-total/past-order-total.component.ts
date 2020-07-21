@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnInit} from '@angular/core';
+import {AfterContentInit, AfterViewInit, Component, Input, OnInit} from '@angular/core';
 import {Order} from "../../../models/order.model";
 
 @Component({
@@ -6,7 +6,7 @@ import {Order} from "../../../models/order.model";
   templateUrl: './past-order-total.component.html',
   styleUrls: ['./past-order-total.component.scss'],
 })
-export class PastOrderTotalComponent implements AfterViewInit {
+export class PastOrderTotalComponent implements AfterContentInit {
 
   @Input("orders") orders: Order[]
 
@@ -17,7 +17,7 @@ export class PastOrderTotalComponent implements AfterViewInit {
 
   constructor() { }
 
-  ngAfterViewInit() {
+  ngAfterContentInit() {
     this.subTotal = this.calculateTotal(this.orders)
     this.total = this.subTotal + this.deliveryTax
   }
@@ -27,7 +27,7 @@ export class PastOrderTotalComponent implements AfterViewInit {
     if(orders.length == 0){
       return 0
     }
-    var subTotal:number[]
+    let subTotal: number[];
     subTotal = orders.map((value)=>{return value.product.price * value.qntItem})
     return subTotal.reduce((p,v)=>p+v)
   }

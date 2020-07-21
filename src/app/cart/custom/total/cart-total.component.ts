@@ -8,7 +8,7 @@ import { Order } from 'src/app/models/order.model';
   styleUrls: ['./cart-total.component.scss'],
 })
 export class CartTotalComponent implements AfterContentInit {
-
+  
   public subTotal:number = 0;
   //todo get from information deliveryTax
   public deliveryTax:number = 890;

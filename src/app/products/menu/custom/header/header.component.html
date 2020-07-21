@@ -3,10 +3,10 @@ src="assets/background-example.png"
 ></ion-img>
 <ion-card class="card">
   <ion-card-header>
-    <ion-card-title>Delivery App</ion-card-title>
+    <ion-card-title>{{information.establishment_name}}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
     <p style="color: #f00;"><ion-icon name="time-outline" ></ion-icon> Abre às 18:00</p>
-    <p>Entrega grátis ● 30-40 min.</p>
+    <p>Entrega {{information.delivery_fee | currencyFormat}} ● {{information.delivery_time}}</p>
   </ion-card-content>
 </ion-card>
