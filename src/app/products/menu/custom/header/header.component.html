@@ -6,7 +6,8 @@ src="assets/background-example.png"
     <ion-card-title>{{information.establishment_name}}</ion-card-title>
   </ion-card-header>
   <ion-card-content>
-    <p style="color: #f00;"><ion-icon name="time-outline" ></ion-icon> Abre às 18:00</p>
+    <p *ngIf="isOpen" class="open"><ion-icon name="time-outline" ></ion-icon> Fecha às {{information.today.work_close}}</p>
+    <p *ngIf="!isOpen" class="close"><ion-icon name="time-outline" ></ion-icon> Abre às {{information.today.work_open}}</p>
     <p>Entrega {{information.delivery_fee | currencyFormat}} ● {{information.delivery_time}}</p>
   </ion-card-content>
 </ion-card>
