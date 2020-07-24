@@ -2,6 +2,7 @@
   "establishment_name": "Delivery App",
   "today": {
     "full_time": true,
+    "isOpen":true,
     "day": 0,
     "name": "Segunda-feira",
     "work_open": "18:00",
@@ -10,42 +11,49 @@
   "week_work": [
     {
       "full_time": true,
+      "isOpen":true,
       "day": 1,
       "name": "Segunda-feira",
       "work_open": "18:00",
       "work_close": "01:00"
     },{
       "full_time": true,
+      "isOpen":true,
       "day": 2,
       "name": "Terça-feira",
       "work_open": "18:00",
       "work_close": "01:00"
     },{
       "full_time": true,
+      "isOpen":true,
       "day": 3,
       "name": "Quarta-feira",
      "work_open": "18:00",
       "work_close": "01:00"
     },{
       "full_time": true,
+      "isOpen":true,
       "day": 4,
       "name": "Quinta-feira",
       "work_open": "18:00",
       "work_close": "01:00"
     },{
       "full_time": true,
+      "isOpen":true,
       "day": 5,
       "name": "sexta-feira",
       "work_open": "18:00",
       "work_close": "01:00"
     },{
       "full_time": true,
+      "isOpen":true,
       "day": 6,
       "name": "Sábado",
       "work_open": "18:00",
       "work_close": "01:00"
     },{
       "full_time": true,
+      "isOpen":true,
       "day": 0,
       "name": "Domingo",
       "work_open": "18:00",
