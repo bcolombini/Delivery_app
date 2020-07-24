@@ -13,7 +13,7 @@
 
 <!--  <custom-past-order-show-more *ngIf="pOrder.orders.length > 3" (onClick)="showMore(order.id)"></custom-past-order-show-more>-->
 
-  <custom-past-order-total [orders]="pOrder.orders"></custom-past-order-total>
-  <custom-past-order-re-order-button (onClick)="reOrder(order)"></custom-past-order-re-order-button>
+  <custom-past-order-total [pOrder]="pOrder"></custom-past-order-total>
+  <custom-past-order-re-order-button (onClick)="reOrder(pOrder)"></custom-past-order-re-order-button>
   </ion-card-content>
 </ion-card>

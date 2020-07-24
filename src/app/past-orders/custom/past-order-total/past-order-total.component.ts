@@ -1,5 +1,5 @@
 import {AfterContentInit, AfterViewInit, Component, Input, OnInit} from '@angular/core';
-import {Order} from "../../../models/order.model";
+import {Order, PastOrder} from "../../../models/order.model";
 
 @Component({
   selector: 'custom-past-order-total',
@@ -8,18 +8,21 @@ import {Order} from "../../../models/order.model";
 })
 export class PastOrderTotalComponent implements AfterContentInit {
 
-  @Input("orders") orders: Order[]
+  @Input("pOrder") pOrder: PastOrder
 
   public subTotal:number = 0;
   //todo get from information deliveryTax
-  public deliveryTax:number = 890;
+  public deliveryTax:number = 0;
   public total:number = 0;
 
   constructor() { }
 
   ngAfterContentInit() {
-    this.subTotal = this.calculateTotal(this.orders)
-    this.total = this.subTotal + this.deliveryTax
+    this.subTotal = this.calculateTotal(this.pOrder.orders)
+    //todo this.pOrder.delivery_fee
+    this.pOrder.delivery_fee = 100
+    this.deliveryTax = this.pOrder.delivery_fee
+    this.total = this.subTotal + this.pOrder.delivery_fee
   }
 
 

@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Order, PastOrders} from 'src/app/models/order.model';
+import {Order, PastOrder, PastOrders} from 'src/app/models/order.model';
+import {CartService} from "../../../cart/cart.service";
+import {NavController} from "@ionic/angular";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'custom-past-order-item',
@@ -12,16 +15,18 @@ export class PastOrderItemComponent implements OnInit {
 
   public show = false;
   public icon = "chevron-down-outline"
-  constructor() { }
+  constructor(
+      private cartService:CartService,
+      private router:Router) { }
 
   ngOnInit() {}
 
-  showMore(orderId:number){
-    console.log("TODO SHOW MORE")
-  }
-
-  reOrder(item:Order){
-    console.log("TODO REORDER ACTION")
+  async reOrder(pastOrder: PastOrder) {
+    this.cartService.clearCart()
+    for (let order of pastOrder.orders) {
+      this.cartService.addIntoCart(order)
+    }
+    await this.router.navigate(['/tabs/cart'])
   }
 
 }

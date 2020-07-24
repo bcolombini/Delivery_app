@@ -7,7 +7,7 @@ import { Subject, Observable } from 'rxjs';
 })
 export class CartService {
   
-  public cartList:Order[] = new Array()
+  public cartList:Order[] = []
   private cartSubject:Subject<Order[]> = new Subject<Order[]>()
 
   constructor() { }
@@ -35,6 +35,15 @@ export class CartService {
   public removeItem(item:Order){
     this.cartList = this.cartList.filter((order)=>order != item)
     this.updateCart()
+  }
+
+  public clearCart(){
+    if(this.cartList.length < 1){
+      return
+    }
+    for(let order of this.cartList){
+      this.removeItem(order)
+    }
   }
 
   private updateCart(){

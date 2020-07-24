@@ -27,6 +27,8 @@ export class InformationService {
       return await this.getInformationLocal()
     }
     const info = await this.getInformationFromWeb()
+    //todo check here
+    info.delivery_fee = 100
     await this.saveInformationLocal(info)
     return info
   }

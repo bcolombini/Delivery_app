@@ -8,6 +8,7 @@ export class PastOrders {
 export class PastOrder{
     uuid:string;
     id:number;
+    delivery_fee:number;
     orders:Order[];
 }
 
