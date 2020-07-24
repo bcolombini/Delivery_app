@@ -5,6 +5,8 @@ export const TextConstants = {
     DELIVERY_AREA:"Ver área de entrega",
     CLOSE:"Fechar",
     ABOUT_US:"Sobre nós",
-    LOADING:"Carregando"
-
+    LOADING:"Carregando",
+    WARNING:"Aviso",
+    ERROR_HAPPEN:"Ocorreu um erro. Tente novamente",
+    ESTABLISHMENT: "Estabelecimento fechado."
 }

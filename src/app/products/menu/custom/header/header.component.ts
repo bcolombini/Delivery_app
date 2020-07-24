@@ -23,13 +23,14 @@ export class HeaderComponent implements AfterContentInit{
   @ViewChild("ionImgFinal") ionImage: ElementRef
   @Input("information") information: Information
 
-  public isOpen = true
+  public isOpen = false
 
   constructor(private informationService:InformationService) {
     this.informationService.isOpenEstablishmentSubject()
   }
 
   async ngAfterContentInit() {
+    this.isOpen = await this.informationService.isOpen()
     this.informationService.getEstablishmentSubject().subscribe(value => value.then(x=>this.isOpen = x))
   }
 

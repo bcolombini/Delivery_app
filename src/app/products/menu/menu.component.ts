@@ -39,8 +39,12 @@ export class MenuComponent implements AfterViewInit,ViewWillEnter {
     this.information = await this.informationService.getInformation()
   }
 
-  public onClick($event){
-    this.router.navigate(['/product'],{fragment:$event}).then()
+  public async onClick($event) {
+    if (await this.informationService.isOpen()) {
+      this.router.navigate(['/product'], {fragment: $event}).then()
+    } else {
+      await this.informationService.showAlertClose()
+    }
   }
 
   public openActionSheet(){
@@ -61,10 +65,9 @@ export class MenuComponent implements AfterViewInit,ViewWillEnter {
       } catch {
         console.log("ERROR")
         const alert = await this.alertController.create({
-          cssClass: 'my-custom-class',
-          header: 'Aviso',
-          message: 'Ocorreu um erro. Tente novamente',
-          buttons: ['Fechar']
+          header: TextConstants.WARNING,
+          message: TextConstants.ERROR_HAPPEN,
+          buttons: [TextConstants.CLOSE]
         });
         await alert.present();
       }
