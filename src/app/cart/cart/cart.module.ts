@@ -6,19 +6,19 @@ import { SharedModule } from 'src/app/shared/shared/shared.module';
 import { CartTotalComponent } from '../custom/total/cart-total.component';
 import { CartAddressComponent } from '../custom/address/cart-address.component';
 import { CartCupomComponent } from '../custom/cart-cupom/cart-cupom.component';
+import { CartEmptyAddressComponent } from "../custom/empty-address/cart-empty-address.component";
 import {IonicModule} from "@ionic/angular";
-import {CartEmptyAddressComponent} from "../custom/empty-address/cart-empty-address.component";
 
 
 
 @NgModule({
-  declarations: [
-    CartComponent,
-    CartItemComponent,
-    CartTotalComponent,
-    CartAddressComponent,
-    CartCupomComponent,
-      CartEmptyAddressComponent
+    declarations: [
+        CartComponent,
+        CartItemComponent,
+        CartTotalComponent,
+        CartAddressComponent,
+        CartCupomComponent,
+         CartEmptyAddressComponent
   ],
     imports: [
         CommonModule,
