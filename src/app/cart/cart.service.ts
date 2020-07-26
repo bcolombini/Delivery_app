@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Order } from '../models/order.model';
 import { Subject, Observable } from 'rxjs';
+import {MenuService} from "../products/menu/menu.service";
+import {Product} from "../models/product.model";
+import {Menu} from "../models/menu.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,7 @@ export class CartService {
   public cartList:Order[] = []
   private cartSubject:Subject<Order[]> = new Subject<Order[]>()
 
-  constructor() { }
+  constructor(private menuService:MenuService) { }
 
   public addIntoCart(order:Order) {
     if(!this.hasSameItem(order)){
@@ -81,4 +84,17 @@ export class CartService {
     this.updateCart()
   }
 
+  public async getNewOrderListWithItemsExistsOrUpdatePrice(orders:Order[]):Promise<Order[]>{
+    let newOrderList:Order[] = []
+    let products:Product[] = await this.menuService.getAllProducts()
+    for(let order of orders){
+      for(let product of products){
+        if(order.product.id == product.id) {
+          order.product = product
+          newOrderList.push(order)
+        }
+      }
+    }
+    return newOrderList
+  }
 }

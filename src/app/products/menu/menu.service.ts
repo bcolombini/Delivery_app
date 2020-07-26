@@ -7,13 +7,12 @@ import {URLConstants} from "../../constants/URLConstants";
 import {TextConstants} from "../../constants/TextConstants";
 import {HttpService} from "../../service/http.service";
 import {Menu} from "../../models/menu.model";
+import {Product} from "../../models/product.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-
-
 
   constructor(
     private httpService: HttpService,
@@ -25,8 +24,8 @@ export class MenuService {
     return await this.httpService.getRequest(URLConstants.MENU).toPromise() as Menu[]
   }
 
-  public async getInformation(){
-    // return await this.informationService()
+  public async getAllProducts(){
+    return await this.httpService.getRequest(URLConstants.ALL_PRODUCTS).toPromise() as Product[]
   }
 
   public async presentAlert() {

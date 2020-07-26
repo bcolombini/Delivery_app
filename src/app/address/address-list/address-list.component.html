@@ -1,0 +1,24 @@
+<ion-header color="dark">
+  <ion-toolbar color="dark">
+    <ion-title>Endereços</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <custom-empty [icon]="icon" [message]="message" [messageAction]="messageAction" [action]="action"></custom-empty>
+  <ion-item-divider *ngIf="addressList.length > 0">
+    <ion-label>Endereços salvos</ion-label>
+  </ion-item-divider>
+  <span *ngIf="addressList.length > 0">
+    <address-item (click)="chooseAddress(address)" *ngFor="let address of addressList" [address]="address"></address-item>
+  </span>
+</ion-content>
+<ion-footer *ngIf="addressList.length > 0">
+  <ion-toolbar>
+    <ion-button (click)="addNewAddress()" expand="full" fill="solid" color="dark">
+      Novo endereço
+    </ion-button>
+  </ion-toolbar>

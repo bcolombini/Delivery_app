@@ -23,10 +23,12 @@ export class PastOrderItemComponent implements OnInit {
 
   async reOrder(pastOrder: PastOrder) {
     this.cartService.clearCart()
-    for (let order of pastOrder.orders) {
+    let orders = await this.cartService.getNewOrderListWithItemsExistsOrUpdatePrice(pastOrder.orders)
+    for (let order of orders) {
       this.cartService.addIntoCart(order)
     }
     await this.router.navigate(['/tabs/cart'])
   }
+
 
 }

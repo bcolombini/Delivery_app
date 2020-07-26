@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from './profile.component';
 import { LoginComponent } from './login/login.component';
-
+import { IonicModule } from "@ionic/angular";
 
 
 @NgModule({
@@ -10,8 +10,9 @@ import { LoginComponent } from './login/login.component';
     ProfileComponent,
     LoginComponent
   ],
-  imports: [
-    CommonModule
-  ]
+    imports: [
+        CommonModule,
+        IonicModule
+    ]
 })
 export class ProfileModule { }

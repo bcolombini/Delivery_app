@@ -11,7 +11,6 @@ export class PastOrderTotalComponent implements AfterContentInit {
   @Input("pOrder") pOrder: PastOrder
 
   public subTotal:number = 0;
-  //todo get from information deliveryTax
   public deliveryTax:number = 0;
   public total:number = 0;
 
@@ -19,8 +18,6 @@ export class PastOrderTotalComponent implements AfterContentInit {
 
   ngAfterContentInit() {
     this.subTotal = this.calculateTotal(this.pOrder.orders)
-    //todo this.pOrder.delivery_fee
-    this.pOrder.delivery_fee = 100
     this.deliveryTax = this.pOrder.delivery_fee
     this.total = this.subTotal + this.pOrder.delivery_fee
   }

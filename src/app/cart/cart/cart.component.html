@@ -16,15 +16,15 @@
     <ion-label>Endereço</ion-label>
   </ion-item-divider>
   <custom-cart-address (click)="goToAddress()"></custom-cart-address>
-  <ion-item-divider>
-    <ion-label>Promoção</ion-label>
-  </ion-item-divider>
-  <custom-cart-cupom></custom-cart-cupom>
+<!--  <ion-item-divider>-->
+<!--    <ion-label>Promoção</ion-label>-->
+<!--  </ion-item-divider>-->
+<!--  <custom-cart-cupom></custom-cart-cupom>-->
   </ion-list>
 </ion-content>
 <ion-footer *ngIf="!isEmpty">
   <ion-toolbar>
-    <ion-button (click)="finishOrder()" expand="full" fill="solid" color="dark">
+    <ion-button (click)="nextStep()" expand="full" fill="solid" color="dark">
       Avançar
     </ion-button>  
   </ion-toolbar>

@@ -1,0 +1,12 @@
+<ion-item-sliding>
+  <ion-item (click)="chooseAddress()">
+    <ion-label class="ion-text-wrap"  >
+      <p class="title">Minha casa</p>
+      <p>Praça Almirante Jaceguai 61, apto 102, Centro</p>
+      <h3>Rio de Janeiro, RJ <div>80 a 120min</div></h3>
+    </ion-label>
+  </ion-item>
+  <ion-item-options side="end">
+    <ion-item-option color="primary" (click)="editAddress()"><ion-icon slot="icon-only" name="pencil-sharp"></ion-icon></ion-item-option>
+  </ion-item-options>
+</ion-item-sliding>

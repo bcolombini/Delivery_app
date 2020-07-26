@@ -17,5 +17,6 @@
 
 ion-item{
     --inner-padding-start:10px;
-    --padding-start:0
+    --padding-start:0;
+    min-height: 100px;
 }

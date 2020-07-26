@@ -12,25 +12,31 @@
     <ion-label>Apelido para o Endereço</ion-label>
   </ion-item-divider>
   <ion-item>
-    <ion-input placeholder="Ex: Minha casa"></ion-input>
+    <ion-input #nick placeholder="Ex: Minha casa"></ion-input>
   </ion-item>
   <ion-item-divider>
     <ion-label>Endereço</ion-label>
   </ion-item-divider>
   <ion-item>
-    <ion-input placeholder="Rua"></ion-input>
-    </ion-item>
-    <ion-item>
-    <ion-input placeholder="Número"></ion-input>
+    <ion-input #street placeholder="Rua"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input placeholder="Cidade"></ion-input>
+    <ion-input #number placeholder="Número"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input placeholder="Estado"></ion-input>
+    <ion-input #complement placeholder="Complemento"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-input placeholder="CEP"></ion-input>
+    <ion-input #neighborhood placeholder="Bairro"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input #city placeholder="Cidade"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input #state placeholder="Estado"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input #zipcode placeholder="CEP"></ion-input>
   </ion-item>
 </ion-content>
 <ion-footer>
@@ -38,7 +44,7 @@
     <ion-button (click)="deleteAddress()" expand="full" fill="solid" color="dark">
       Apagar Endereço
     </ion-button>
-    <ion-button (click)="saveAddress()" expand="full" fill="solid" color="dark">
+    <ion-button (click)="updateAddress()" expand="full" fill="solid" color="dark">
       Atualizar Endereço
     </ion-button>
   </ion-toolbar>

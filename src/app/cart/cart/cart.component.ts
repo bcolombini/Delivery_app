@@ -32,16 +32,16 @@ export class CartComponent implements AfterViewInit{
     })
   }
 
-  public goToAddress(){
-    this.route.navigate(["/address"])
-  }
-
-  public removeItem(item){
-    this.cartService.removeItem(item)
+  public async goToAddress() {
+    await this.route.navigate(["/address-list"])
   }
 
   private isEmptyCart(){
     return this.cartList.length == 0
+  }
+
+  public nextStep(){
+
   }
 
 }

@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ProductComponent } from './products/product/product.component';
 import { OrderEditComponent } from './edit/order-edit.component';
 import { AddressComponent } from './address/address.component';
+import {AddressListComponent} from "./address/address-list/address-list.component";
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path:'address',
     component:AddressComponent
+  },
+  {
+    path:'address-list',
+    component:AddressListComponent
   }
 ];
 @NgModule({
