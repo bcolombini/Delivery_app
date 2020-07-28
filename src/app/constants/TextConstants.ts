@@ -12,5 +12,6 @@ export const TextConstants = {
     ERROR_SAVE_ADDRESS: "Ocorreu um erro ao salvar o endereço",
     ADDRESS_MESSAGE: "Não há endereços cadastrados.",
     ADDRESS_ACTION_MESSAGE: "Cadastrar novo endereço",
-    CEP_TO_CHANGE: "CEP_TO_CHANGE"
+    CEP_TO_CHANGE: "CEP_TO_CHANGE",
+    FIELD_EMPTY: "Preencha todos os campos necessários"
 }

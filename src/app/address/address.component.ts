@@ -35,6 +35,10 @@ export class AddressComponent extends AddressClass {
 
 
   async saveAddress() {
+    if (this.hasEmptyRequiredField()){
+      await this.alertEmptyField();
+      return;
+    }
     const address = new Address();
     address.nick = this.nick.value.toString();
     address.street = this.street.value.toString();
@@ -46,6 +50,21 @@ export class AddressComponent extends AddressClass {
     address.zipcode = this.zipcode.value.toString();
     address.isMain = this.mainAddress.checked;
     await super.saveAddress(address);
+  }
+
+  private hasEmptyRequiredField(): boolean{
+    if (this.street.value === ''){return true; }
+    if (this.number.value === ''){return true; }
+    if (this.neighborhood.value === ''){return true; }
+    if (this.city.value === ''){return true; }
+    if (this.state.value === ''){return true; }
+    if (this.zipcode.value === ''){return true; }
+    return false;
+  }
+
+  private async alertEmptyField() {
+    const alert = await this.alertController.create({header: TextConstants.WARNING, message: TextConstants.FIELD_EMPTY});
+    await alert.present();
   }
 
   public async requestCep() {
