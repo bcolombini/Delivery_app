@@ -1,0 +1,26 @@
+[
+  {
+    "id": 0,
+    "isMain": true,
+    "nick":"Minha casa",
+    "street": "Praça Almirante Jaceguai",
+    "number": "61",
+    "complement": "apto 102",
+    "neighborhood": "Centro",
+    "city": "Rio de Janeiro",
+    "state": "Rj",
+    "zipcode": "20240000"
+  },
+  {
+    "id": 1,
+    "isMain": false,
+    "nick":"Segundo endereço",
+    "street": "Mario pereira de lima",
+    "number": "59",
+    "complement": "apto 401",
+    "neighborhood": "Santa Cecilia",
+    "city": "Juiz de Fora",
+    "state": "MG",
+    "zipcode": "36026200"
+  }
+]

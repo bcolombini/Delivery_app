@@ -3,8 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ProductComponent } from './products/product/product.component';
 import { OrderEditComponent } from './edit/order-edit.component';
 import { AddressComponent } from './address/address.component';
-import {AddressListComponent} from "./address/address-list/address-list.component";
-import {AddressEditComponent} from "./address/edit/address-edit.component";
+import {AddressListComponent} from './address/address-list/address-list.component';
+import {AddressEditComponent} from './address/edit/address-edit.component';
 
 const routes: Routes = [
   {
@@ -12,24 +12,24 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
-    path:'product',
-    component:ProductComponent
+    path: 'product',
+    component: ProductComponent
   },
   {
-    path:'edit',
-    component:OrderEditComponent
+    path: 'edit',
+    component: OrderEditComponent
   },
   {
-    path:'address',
-    component:AddressComponent
+    path: 'address',
+    component: AddressComponent
   },
   {
-    path:'edit-address',
-    component:AddressEditComponent
+    path: 'edit-address',
+    component: AddressEditComponent
   },
   {
-    path:'address-list',
-    component:AddressListComponent
+    path: 'address-list',
+    component: AddressListComponent
   }
 ];
 @NgModule({

@@ -27,7 +27,7 @@ export class AddressEditComponent extends AddressClass implements OnInit {
               addressService:AddressService,
               alertController:AlertController,
               private route: ActivatedRoute) {
-    super(navController, addressService, alertController);
+    super(navController, addressService, alertController, loadingController);
   }
 
   async ngOnInit() {

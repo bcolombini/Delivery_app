@@ -19,12 +19,12 @@ export class PastOrdersComponent implements ViewDidEnter {
       private alertController:AlertController) { }
 
   async ionViewDidEnter(){
-    const loading = await this.loadingController.create({message:TextConstants.LOADING})
-    await loading.present()
+    const loading = await this.loadingController.create({message: TextConstants.LOADING});
+    await loading.present();
     try{
       this.pastOrders = await this.pastOrdersService.getPastOrder()
     } catch {
-      console.log("ERROR")
+      console.log('ERROR');
       const alert = await this.alertController.create({
         header: TextConstants.WARNING,
         message: TextConstants.ERROR_HAPPEN,

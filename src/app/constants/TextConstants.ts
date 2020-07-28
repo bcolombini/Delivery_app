@@ -11,5 +11,6 @@ export const TextConstants = {
     ESTABLISHMENT: "Estabelecimento fechado.",
     ERROR_SAVE_ADDRESS: "Ocorreu um erro ao salvar o endereço",
     ADDRESS_MESSAGE: "Não há endereços cadastrados.",
-    ADDRESS_ACTION_MESSAGE: "Cadastrar novo endereço"
+    ADDRESS_ACTION_MESSAGE: "Cadastrar novo endereço",
+    CEP_TO_CHANGE: "CEP_TO_CHANGE"
 }

@@ -20,7 +20,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ProfileModule } from './profile/profile.module';
 import { PastOrdersModule } from './past-orders/past-orders.module';
 import { AddressModule } from "./address/address.module";
-import { Facebook } from '@ionic-native/facebook/ngx'
+import { Facebook } from '@ionic-native/facebook/ngx';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { Facebook } from '@ionic-native/facebook/ngx'
     ProductComponent,
     QuantityComponent,
     NotificationsComponent,
-    OrderEditComponent
+    OrderEditComponent,
   ],
   entryComponents: [],
   imports: [
