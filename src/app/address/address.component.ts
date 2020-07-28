@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {AlertController, IonInput, LoadingController, NavController} from '@ionic/angular';
+import {AlertController, IonInput, IonToggle, LoadingController, NavController} from '@ionic/angular';
 import { AddressClass } from './address.class';
 import { AddressService } from './address.service';
 import { Storage } from '@ionic/storage';
@@ -23,6 +23,7 @@ export class AddressComponent extends AddressClass {
   @ViewChild('city') city: IonInput;
   @ViewChild('state') state: IonInput;
   @ViewChild('zipcode') zipcode: IonInput;
+  @ViewChild('main_address') mainAddress: IonToggle;
 
   constructor(navController: NavController,
               addressService: AddressService,
@@ -33,7 +34,7 @@ export class AddressComponent extends AddressClass {
   }
 
 
-  async saveAddress(){
+  async saveAddress() {
     const address = new Address();
     address.nick = this.nick.value.toString();
     address.street = this.street.value.toString();
@@ -43,6 +44,7 @@ export class AddressComponent extends AddressClass {
     address.city = this.city.value.toString();
     address.state = this.state.value.toString();
     address.zipcode = this.zipcode.value.toString();
+    address.isMain = this.mainAddress.checked;
     await super.saveAddress(address);
   }
 
@@ -73,4 +75,5 @@ export class AddressComponent extends AddressClass {
   formatCep() {
     this.zipcode.value = this.cepMask.doMask(this.zipcode.value.toString());
   }
+
 }
