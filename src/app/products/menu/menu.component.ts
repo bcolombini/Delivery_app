@@ -3,67 +3,67 @@ import { MenuService } from './menu.service';
 import { Menu } from 'src/app/models/menu.model';
 import { Router } from '@angular/router';
 import {AlertController, LoadingController, ViewWillEnter} from '@ionic/angular';
-import {TextConstants} from "../../constants/TextConstants";
-import {InformationService} from "../../service/information.service";
-import {Information} from "../../models/information.model";
+import {TextConstants} from '../../constants/TextConstants';
+import {InformationService} from '../../service/information.service';
+import {Information} from '../../models/information.model';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
 })
-export class MenuComponent implements AfterViewInit,ViewWillEnter {
+export class MenuComponent implements AfterViewInit, ViewWillEnter {
 
-  public menu:Menu[];
+  public menu: Menu[];
   private information: Information;
 
 
   constructor(
-    private menuService:MenuService,
-    private informationService:InformationService,
-    private router:Router,
-    private alertController:AlertController,
-    private loadingController:LoadingController){ }
+    private menuService: MenuService,
+    private informationService: InformationService,
+    private router: Router,
+    private alertController: AlertController,
+    private loadingController: LoadingController){ }
 
 
   async doRefresh(event){
-    await this.updateMenu()
-    event.target.complete()
+    await this.updateMenu();
+    event.target.complete();
   }
 
   async ngAfterViewInit(){
-    await this.updateMenu(true)
+    await this.updateMenu(true);
   }
 
   async ionViewWillEnter(){
-    this.information = await this.informationService.getInformation()
+    this.information = await this.informationService.getInformation();
   }
 
   public async onClick($event) {
     if (await this.informationService.isOpen()) {
-      this.router.navigate(['/product'], {fragment: $event}).then()
+      await this.router.navigate(['/product'], {fragment: JSON.stringify($event)});
     } else {
-      await this.informationService.showAlertClose()
+      await this.informationService.showAlertClose();
     }
   }
 
   public openActionSheet(){
-    this.menuService.presentActionSheet().then()
+    this.menuService.presentActionSheet().then();
   }
 
   public openAlertInformation(){
-    this.menuService.presentAlert().then()
+    this.menuService.presentAlert().then();
   }
 
-  async updateMenu(withLoading:boolean = false){
-    const loading = await this.loadingController.create({message:TextConstants.LOADING})
-    if(withLoading) {
-      await loading.present()
+  async updateMenu(withLoading: boolean = false){
+    const loading = await this.loadingController.create({message: TextConstants.LOADING});
+    if (withLoading) {
+      await loading.present();
     }
     try{
-      this.menu = await this.menuService.getProductList()
+      this.menu = await this.menuService.getProductList();
       } catch {
-        console.log("ERROR")
+        console.log('ERROR');
         const alert = await this.alertController.create({
           header: TextConstants.WARNING,
           message: TextConstants.ERROR_HAPPEN,
@@ -71,8 +71,8 @@ export class MenuComponent implements AfterViewInit,ViewWillEnter {
         });
         await alert.present();
       }
-    if(withLoading) {
-      await loading.dismiss()
+    if (withLoading) {
+      await loading.dismiss();
     }
   }
 

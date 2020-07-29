@@ -14,7 +14,7 @@ import {TextConstants} from '../../constants/TextConstants';
 })
 export class AddressEditComponent extends AddressClass implements OnInit {
 
-  public address;
+  public address = new Address();
 
   constructor(navController: NavController,
               addressService: AddressService,
@@ -26,7 +26,7 @@ export class AddressEditComponent extends AddressClass implements OnInit {
   }
 
   async ngOnInit() {
-    this.address = await this.route.fragment.toPromise();
+    this.address = JSON.parse(await this.route.fragment.toPromise()) as Address;
   }
 
   async deleteAddress(){

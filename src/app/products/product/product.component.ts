@@ -12,9 +12,9 @@ import { IonTextarea,NavController } from '@ionic/angular';
 })
 export class ProductComponent implements OnInit {
 
-  @ViewChild("observationTextArea") observationTextArea:IonTextarea
+  @ViewChild('observationTextArea') observationTextArea: IonTextarea
   
-  public qntItem:number = 1
+  public qntItem: number = 1;
   
 
   constructor(
@@ -23,14 +23,10 @@ export class ProductComponent implements OnInit {
     private navController: NavController
     ) { }
 
-  public product
+  public product: Product;
 
-  ngOnInit() {
-    this.route.fragment.subscribe(
-      x=> {
-        this.product = x
-      }
-    )
+  async ngOnInit() {
+    this.product = JSON.parse(await this.route.fragment.toPromise()) as Product;
   }
 
   public updateQuantity(qntItem){
