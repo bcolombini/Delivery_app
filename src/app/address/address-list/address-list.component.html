@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <custom-empty [icon]="icon" [message]="message" [messageAction]="messageAction" [action]="action"></custom-empty>
+  <custom-empty *ngIf="addressList.length == 0" [icon]="icon" [message]="message" [messageAction]="messageAction" [action]="action"></custom-empty>
   <ion-item-divider *ngIf="addressList.length > 0">
     <ion-label>Endereços salvos</ion-label>
   </ion-item-divider>

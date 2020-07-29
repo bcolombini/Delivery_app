@@ -15,8 +15,8 @@
   <ion-item-divider>
     <ion-label>Endereço</ion-label>
   </ion-item-divider>
-    <cart-empty-address></cart-empty-address>
-<!--  <custom-cart-address (click)="goToAddress()"></custom-cart-address>-->
+    <cart-empty-address *ngIf="cartService.isEmptyAddressList(addresses)"></cart-empty-address>
+    <custom-cart-address *ngIf="!cartService.isEmptyAddressList(addresses)" [addresses]='addresses' (click)="goToAddress()"></custom-cart-address>
 <!--  <ion-item-divider>-->
 <!--    <ion-label>Promoção</ion-label>-->
 <!--  </ion-item-divider>-->

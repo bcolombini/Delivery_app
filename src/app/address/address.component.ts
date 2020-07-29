@@ -15,22 +15,12 @@ import {CepMask} from '../mask/cep.mask';
 })
 export class AddressComponent extends AddressClass {
 
-  @ViewChild('nick') nick: IonInput;
-  @ViewChild('street') street: IonInput;
-  @ViewChild('number') number: IonInput;
-  @ViewChild('complement') complement: IonInput;
-  @ViewChild('neighborhood') neighborhood: IonInput;
-  @ViewChild('city') city: IonInput;
-  @ViewChild('state') state: IonInput;
-  @ViewChild('zipcode') zipcode: IonInput;
-  @ViewChild('main_address') mainAddress: IonToggle;
-
   constructor(navController: NavController,
               addressService: AddressService,
               alertController: AlertController,
-              private loadingController: LoadingController,
-              private cepMask: CepMask) {
-    super(navController, addressService, alertController);
+              loadingController: LoadingController,
+              cepMask: CepMask) {
+    super(navController, addressService, alertController, loadingController, cepMask);
   }
 
 
@@ -52,47 +42,9 @@ export class AddressComponent extends AddressClass {
     await super.saveAddress(address);
   }
 
-  private hasEmptyRequiredField(): boolean{
-    if (this.street.value === ''){return true; }
-    if (this.number.value === ''){return true; }
-    if (this.neighborhood.value === ''){return true; }
-    if (this.city.value === ''){return true; }
-    if (this.state.value === ''){return true; }
-    if (this.zipcode.value === ''){return true; }
-    return false;
-  }
-
   private async alertEmptyField() {
     const alert = await this.alertController.create({header: TextConstants.WARNING, message: TextConstants.FIELD_EMPTY});
     await alert.present();
-  }
-
-  public async requestCep() {
-    const alert = await this.alertController.create({header: TextConstants.WARNING, message: TextConstants.ERROR_SAVE_ADDRESS});
-    const loading = await this.loadingController.create({message: TextConstants.LOADING});
-    loading.present();
-    try {
-      const cep: CEP = await super.getCep(this.zipcode.value.toString());
-      this.street.disabled = cep.logradouro !== '';
-      this.street.color = 'success';
-      this.city.disabled = cep.localidade !== '';
-      this.city.color = 'success';
-      this.state.disabled = cep.uf !== '';
-      this.state.color = 'success';
-      this.neighborhood.disabled = cep.bairro !== '';
-      this.neighborhood.color = 'success';
-      this.street.value = cep.logradouro;
-      this.city.value = cep.localidade;
-      this.state.value = cep.uf;
-      this.neighborhood.value = cep.bairro;
-    } catch (e) {
-      await alert.present();
-    }
-    await loading.dismiss();
-  }
-
-  formatCep() {
-    this.zipcode.value = this.cepMask.doMask(this.zipcode.value.toString());
   }
 
 }

@@ -8,6 +8,6 @@ export const URLConstants = {
     SAVE_ADDRESS:"",
     DELETE_ADDRESS:"",
     UPDATE_ADDRESS: "",
-    ADDRESS_LIST: "",
+    ADDRESS_LIST: "https://run.mocky.io/v3/6ebcb6b7-9677-4b23-9066-424a1f17e828",
     CEP:"https://viacep.com.br/ws/CEP_TO_CHANGE/json/unicode/"
 }

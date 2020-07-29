@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Address} from "../../../../models/address.model";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'address-item',
@@ -8,9 +9,11 @@ import {Address} from "../../../../models/address.model";
 })
 export class AddressItemComponent implements OnInit {
 
-  @Input("address") address:Address
+  @Input('address') address: Address;
 
-  constructor() { }
+  constructor(
+      private router: Router
+  ) { }
 
   ngOnInit() {}
 
@@ -18,8 +21,8 @@ export class AddressItemComponent implements OnInit {
 
   }
 
-  editAddress(){
-
+  async editAddress(address: Address) {
+    await this.router.navigate(['edit-address'], {fragment: JSON.stringify(address)});
   }
 
 }

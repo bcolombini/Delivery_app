@@ -18,8 +18,8 @@
     <ion-label>Endereço</ion-label>
   </ion-item-divider>
   <ion-item>
-      <ion-input (keyup)="formatCep()" #zipcode placeholder="CEP"></ion-input>
-      <ion-button (click)="requestCep()" slot="end" expand="full" fill="clear" color="dark"><ion-icon slot="icon-only" name="search"></ion-icon></ion-button>
+      <ion-input (keyup)="MaskFormatCep()" #zipcode placeholder="CEP"></ion-input>
+      <ion-button (click)="getCep()" slot="end" expand="full" fill="clear" color="dark"><ion-icon slot="icon-only" name="search"></ion-icon></ion-button>
   </ion-item>
   <ion-item>
     <ion-input #street placeholder="Rua"></ion-input>
