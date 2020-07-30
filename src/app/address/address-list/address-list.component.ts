@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AddressService} from '../address.service';
 import {Address} from '../../models/address.model';
-import {AlertController, LoadingController, ViewDidEnter, ViewWillEnter} from '@ionic/angular';
+import {AlertController, LoadingController, NavController, ViewDidEnter, ViewWillEnter} from '@ionic/angular';
 import {Router} from '@angular/router';
 import {TextConstants} from '../../constants/TextConstants';
 import {ActionEnum} from '../../enums/action.enum';
@@ -23,7 +23,8 @@ export class AddressListComponent implements ViewWillEnter {
     private addressService: AddressService,
     private route: Router,
     private loadingController: LoadingController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private navController: NavController
   ) { }
 
 
@@ -33,7 +34,6 @@ export class AddressListComponent implements ViewWillEnter {
     try{
       this.addressList = await this.addressService.getAddress() as Address[];
     } catch {
-      console.log('ERROR');
       const alert = await this.alertController.create({
         header: TextConstants.WARNING,
         message: TextConstants.ERROR_HAPPEN,
@@ -46,10 +46,16 @@ export class AddressListComponent implements ViewWillEnter {
   }
 
   async addNewAddress() {
-    await this.route.navigate(['/address']);
+    await this.route.navigate(['address']);
   }
 
-  chooseAddress(address: Address) {
+  async chooseAddress(address: Address) {
+    this.addressService.addressChosed = address
+    await this.navController.back()
+  }
 
+  async editAddress($event) {
+    this.addressService.addressToEdit = $event as Address
+    await this.route.navigate(['edit-address'])
   }
 }

@@ -6,6 +6,7 @@ import {AlertController, LoadingController, ViewWillEnter} from '@ionic/angular'
 import {TextConstants} from '../../constants/TextConstants';
 import {InformationService} from '../../service/information.service';
 import {Information} from '../../models/information.model';
+import {ProductService} from "../product/product.service";
 
 @Component({
   selector: 'app-menu',
@@ -23,7 +24,8 @@ export class MenuComponent implements AfterViewInit, ViewWillEnter {
     private informationService: InformationService,
     private router: Router,
     private alertController: AlertController,
-    private loadingController: LoadingController){ }
+    private loadingController: LoadingController,
+    private productService: ProductService){ }
 
 
   async doRefresh(event){
@@ -41,7 +43,8 @@ export class MenuComponent implements AfterViewInit, ViewWillEnter {
 
   public async onClick($event) {
     if (await this.informationService.isOpen()) {
-      await this.router.navigate(['/product'], {fragment: JSON.stringify($event)});
+      this.productService.product = $event;
+      await this.router.navigate(['/product']);
     } else {
       await this.informationService.showAlertClose();
     }
@@ -63,7 +66,6 @@ export class MenuComponent implements AfterViewInit, ViewWillEnter {
     try{
       this.menu = await this.menuService.getProductList();
       } catch {
-        console.log('ERROR');
         const alert = await this.alertController.create({
           header: TextConstants.WARNING,
           message: TextConstants.ERROR_HAPPEN,

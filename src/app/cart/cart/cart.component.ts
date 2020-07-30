@@ -36,7 +36,7 @@ export class CartComponent implements AfterViewInit{
   }
 
   public async goToAddress() {
-    await this.route.navigate(['/address-list']);
+    await this.route.navigate(['address-list']);
   }
 
   private isEmptyCart(){

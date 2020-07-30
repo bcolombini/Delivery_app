@@ -9,6 +9,26 @@ import {CepService} from '../service/cep.service';
 })
 export class AddressService {
 
+  get addressChosed(): Address {
+    return this._addressChosed;
+  }
+
+  set addressChosed(value: Address) {
+    this._addressChosed = value;
+  }
+
+  private _addressChosed: Address;
+
+  get addressToEdit(): Address {
+    return this._addressToEdit;
+  }
+
+  set addressToEdit(value: Address) {
+    this._addressToEdit = value;
+  }
+
+  private _addressToEdit: Address;
+
   constructor(private httpService: HttpService,
               private cepService: CepService) { }
 

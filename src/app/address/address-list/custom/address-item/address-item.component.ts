@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Address} from "../../../../models/address.model";
 import {Router} from '@angular/router';
 
@@ -10,6 +10,8 @@ import {Router} from '@angular/router';
 export class AddressItemComponent implements OnInit {
 
   @Input('address') address: Address;
+  @Output('onClickEdit') onClickEdit = new EventEmitter<Address>()
+  @Output('onClickChosed') onClickChosed = new EventEmitter<Address>()
 
   constructor(
       private router: Router
@@ -17,12 +19,12 @@ export class AddressItemComponent implements OnInit {
 
   ngOnInit() {}
 
-  chooseAddress(){
-
+  chooseAddress(address: Address){
+    this.onClickChosed.emit(address)
   }
 
   async editAddress(address: Address) {
-    await this.router.navigate(['edit-address'], {fragment: JSON.stringify(address)});
+    this.onClickEdit.emit(address)
   }
 
 }

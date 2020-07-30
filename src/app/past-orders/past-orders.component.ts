@@ -24,7 +24,6 @@ export class PastOrdersComponent implements ViewDidEnter {
     try{
       this.pastOrders = await this.pastOrdersService.getPastOrder()
     } catch {
-      console.log('ERROR');
       const alert = await this.alertController.create({
         header: TextConstants.WARNING,
         message: TextConstants.ERROR_HAPPEN,

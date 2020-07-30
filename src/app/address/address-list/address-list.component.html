@@ -13,7 +13,7 @@
     <ion-label>Endereços salvos</ion-label>
   </ion-item-divider>
   <span *ngIf="addressList.length > 0">
-    <address-item (click)="chooseAddress(address)" *ngFor="let address of addressList" [address]="address"></address-item>
+    <address-item (onClickChosed)="chooseAddress($event)" (onClickEdit)="editAddress($event)" *ngFor="let address of addressList" [address]="address"></address-item>
   </span>
 </ion-content>
 <ion-footer *ngIf="addressList.length > 0">

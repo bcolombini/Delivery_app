@@ -4,6 +4,7 @@ import { Product } from 'src/app/models/product.model';
 import { CartService } from 'src/app/cart/cart.service';
 import { Order } from 'src/app/models/order.model';
 import { IonTextarea,NavController } from '@ionic/angular';
+import {ProductService} from "./product.service";
 
 @Component({
   selector: 'app-product',
@@ -20,13 +21,14 @@ export class ProductComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService,
-    private navController: NavController
+    private navController: NavController,
+    private productService: ProductService
     ) { }
 
-  public product: Product;
+  public product
 
   async ngOnInit() {
-    this.product = JSON.parse(await this.route.fragment.toPromise()) as Product;
+    this.product = this.productService.product
   }
 
   public updateQuantity(qntItem){

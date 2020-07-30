@@ -26,7 +26,7 @@ export class AddressEditComponent extends AddressClass implements OnInit {
   }
 
   async ngOnInit() {
-    this.address = JSON.parse(await this.route.fragment.toPromise()) as Address;
+    // this.address = JSON.parse(await this.route.fragment.toPromise()) as Address;
   }
 
   async deleteAddress(){

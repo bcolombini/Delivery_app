@@ -34,15 +34,4 @@ export class HeaderComponent implements AfterContentInit{
     this.informationService.getEstablishmentSubject().subscribe(value => value.then(x=>this.isOpen = x))
   }
 
-  public loadImageError(){
-    console.log('ERROR')
-  }
-  public didLoadImage(){
-    console.log('FINISH')
-  }
-  public willLoadImage(){
-    console.log(this.ionImage)
-    console.log('Loading')
-  }
-
 }
