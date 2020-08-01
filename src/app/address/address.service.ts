@@ -3,6 +3,7 @@ import {HttpService} from '../service/http.service';
 import {URLConstants} from '../constants/URLConstants';
 import {Address} from '../models/address.model';
 import {CepService} from '../service/cep.service';
+import {Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,11 @@ export class AddressService {
 
   set addressChosed(value: Address) {
     this._addressChosed = value;
+    this._addressChosedSubject.next(this._addressChosed)
   }
 
   private _addressChosed: Address;
+  private _addressChosedSubject = new Subject<Address>()
 
   get addressToEdit(): Address {
     return this._addressToEdit;
@@ -50,5 +53,9 @@ export class AddressService {
 
   public async getCep(cep: string){
     return await this.cepService.getCepRequest(cep);
+  }
+
+  chosedAddress() {
+    return this._addressChosedSubject
   }
 }

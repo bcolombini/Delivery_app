@@ -9,6 +9,6 @@ export const URLConstants = {
     SAVE_ADDRESS:"",
     DELETE_ADDRESS:"",
     UPDATE_ADDRESS: "",
-    ADDRESS_LIST: environment.base_url+'address_list',
+    ADDRESS_LIST: environment.base_url+'address',
     CEP:"https://viacep.com.br/ws/{CEP_TO_CHANGE}/json/unicode/"
 }

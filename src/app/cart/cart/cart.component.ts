@@ -4,6 +4,7 @@ import { Order } from 'src/app/models/order.model';
 import { ChipEnum } from 'src/app/enums/chip.enum';
 import { Router } from '@angular/router';
 import {Address} from '../../models/address.model';
+import {ViewWillEnter} from "@ionic/angular";
 
 @Component({
   selector: 'app-cart',

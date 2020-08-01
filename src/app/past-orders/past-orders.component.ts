@@ -34,5 +34,4 @@ export class PastOrdersComponent implements ViewDidEnter {
     await loading.dismiss()
   }
 
-
 }

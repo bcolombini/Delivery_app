@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HTTP, HTTPResponse} from "@ionic-native/http/ngx";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {LoadingController, Platform} from "@ionic/angular";
 import {from, Observable} from "rxjs";
 import {Storage} from "@ionic/storage";
@@ -16,7 +16,7 @@ export class HttpService {
       private platform:Platform,
       private storage:Storage) {}
 
-  public getRequest(url:string):Observable<any> {
+  public getRequest(url:string):Observable<any>{
     return this.isNativeRequest()?this.nativeRequest(url):this.standardRequest(url)
   }
 
@@ -25,21 +25,12 @@ export class HttpService {
   }
 
   private async nativePostRequest(url:string, body: any):Promise<Observable<any>>{
-    let personalToken = await this.storage.get("token")
-    const headers = {
-      Authorization: "Basic "+btoa(personalToken)
-    }
-    let nativeRequest = this.nativeHttp.post(url, body, headers).then(x=>{return JSON.parse(x.data)});
+    let nativeRequest = this.nativeHttp.post(url, body, this.getHeaders()).then(x=>{return JSON.parse(x.data)});
     return from(nativeRequest)
   }
 
   private async standardPostRequest(url:string, body: any):Promise<Observable<any>> {
-    let personalToken = await this.storage.get("token")
-    const headers = {
-      Authorization: "Basic "+btoa(personalToken)
-    }
-    return this.standardHttp.post(url, body, {headers: headers})
-
+    return this.standardHttp.post(url, body, {headers: this.getHeaders()})
   }
 
   private isNativeRequest(){
@@ -47,12 +38,20 @@ export class HttpService {
   }
 
   private nativeRequest(url:string):Observable<any>{
-    let nativeRequest = this.nativeHttp.get(url,{},{}).then(x=>{return JSON.parse(x.data)})
+    let nativeRequest = this.nativeHttp.get(url,{},this.getHeaders()).then(x=>{return JSON.parse(x.data)})
     return from(nativeRequest)
   }
 
-  private standardRequest(url:string):Observable<any>{
-    return this.standardHttp.get(url)
+  private standardRequest(url: string): Observable<any> {
+    return this.standardHttp.get(url, {headers: this.getHeaders()});
   }
 
+  private getHeaders() {
+    let personalToken = ""
+    personalToken = "YWxhZGRpbjpvcGVuc2VzYW1l"
+    return {
+      // Authorization: "Bearer " + btoa(personalToken)
+      Authorization: "Bearer " + btoa(personalToken)
+    }
+  }
 }

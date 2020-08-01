@@ -24,7 +24,7 @@ export class MenuService {
     return await this.httpService.getRequest(URLConstants.MENU).toPromise() as Menu[]
   }
 
-  public async getAllProducts(){
+  public async getAllProducts() {
     return await this.httpService.getRequest(URLConstants.ALL_PRODUCTS).toPromise() as Product[]
   }
 

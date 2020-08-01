@@ -1,7 +1,9 @@
-import {AfterContentChecked, Component, Input, OnInit} from '@angular/core';
+import {AfterContentChecked, ChangeDetectorRef, Component, Input, OnInit} from '@angular/core';
 import {Address} from '../../../models/address.model';
 import {InformationService} from '../../../service/information.service';
 import {Information} from '../../../models/information.model';
+import {AddressService} from "../../../address/address.service";
+import {ViewWillEnter} from "@ionic/angular";
 
 @Component({
   selector: 'custom-cart-address',
@@ -15,22 +17,35 @@ export class CartAddressComponent implements OnInit {
   public address: Address = new Address();
   public information: Information = new Information();
 
-  constructor(private informationService: InformationService) { }
+  constructor(private informationService: InformationService,
+              private addressService: AddressService,
+              public detectorRef: ChangeDetectorRef) { }
 
   async ngOnInit() {
-    this.address = await this.getMainOrFirstAddress(this.addresses);
+    this.address = this.getMainOrFirstAddress(this.addresses);
     this.information = await this.informationService.getInformation();
+    this.addressService.chosedAddress().subscribe(chosedAddress => {
+      this.address = chosedAddress
+      this.detectorRef.detectChanges()
+    })
   }
 
-
-  private async getMainOrFirstAddress(addresses: Address[]): Promise<Address> {
+  private getMainOrFirstAddress(addresses: Address[]): Address {
+    if(this.hasChosedAddress()){
+      return this.addressService.addressChosed
+    }
     if (this.hasMainAddress(addresses)){
-      return await addresses.filter(value => value.isMain == true)[0];
+      return addresses.filter(value => value.isMain == true)[0];
     }
     return addresses[0];
   }
 
-  private async hasMainAddress(addresses: Address[]): Promise<boolean> {
-    return await addresses.filter(value => value.isMain == true).length > 0;
+  private hasChosedAddress(){
+    console.log(this.addressService.addressChosed)
+    return this.addressService.addressChosed != null
+  }
+
+  private hasMainAddress(addresses: Address[]): boolean {
+    return addresses.filter(value => value.isMain == true).length > 0;
   }
 }
